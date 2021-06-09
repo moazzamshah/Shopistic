@@ -1,0 +1,23 @@
+{
+  "name": "final_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm start --prefix server\" \"npm start --prefix client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ahmad575-a/FINAL_PROJECT.git"
+  },
+  "keywords": [],
+  "author": "Syed, Aslan, Ahmad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ahmad575-a/FINAL_PROJECT/issues"
+  },
+  "homepage": "https://github.com/Ahmad575-a/FINAL_PROJECT#readme",
+  "dependencies": {
+    "concurrently": "^6.2.0"
+  }
+}
