@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const passport = require('passport');
+const userRoute = require('./routes/user')
 
 // client connection
 const cors = require('cors')
@@ -22,9 +24,15 @@ mongoose.connect(DB_URL, {
 app.use(cors());
 
 app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+
+// initializing passport
+/* app.use(passport.initialize());
+require('./config/passport')(passport); */
 
 
-
+// Routes
+app.use('/user' , userRoute)
 
 //! listen app with port
 app.listen(PORT, () => {
