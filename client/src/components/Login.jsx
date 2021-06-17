@@ -18,7 +18,7 @@ export const Login = () => {
   });
 
   // functions to build form returned by useForm() hook
-  const { register, handleSubmit, reset, formState: { errors } } = useForm({
+  const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(validationSchema)
   });
   const onSubmit = (data) => {
@@ -26,37 +26,43 @@ export const Login = () => {
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(data, null, 4));
   }
   return (
-
-    <form onSubmit={handleSubmit(onSubmit)}>
-      {/* Email */}
-      <div className="form-group">
-        <label>Email</label>
-        <input
-          name="email"
-          type="text"
-          {...register('email')}
-          className={`form-control ${errors.email ? 'is-invalid' : ''}`}
-        />
-        <div className="invalid-feedback">{errors.email?.message}</div>
+    <div className="col-md-12">
+      <div className="card card-container">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          {/* Email */}
+          <div className="form-group">
+            <label>Email</label>
+            <input
+              name="email"
+              type="text"
+              {...register('email')}
+              className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+            />
+            <div className="invalid-feedback">{errors.email?.message}</div>
+          </div>
+          {/* Password */}
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              name="password"
+              type="password"
+              {...register('password')}
+              className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+            />
+            <div className="invalid-feedback">{errors.password?.message}</div>
+          </div>
+          {/* Button */}
+          <div className="form-group">
+            <button type="submit" className="btn btn-primary">
+              Login
+            </button>
+          </div>
+          <p className="forgot-password text-left">
+            New to Storeverse <a href="/register"> Register?</a>
+          </p>
+        </form>
       </div>
-      {/* Password */}
-      <div className="form-group">
-        <label>Password</label>
-        <input
-          name="password"
-          type="password"
-          {...register('password')}
-          className={`form-control ${errors.password ? 'is-invalid' : ''}`}
-        />
-        <div className="invalid-feedback">{errors.password?.message}</div>
-      </div>
-      {/* Button */}
-      <div className="form-group">
-        <button type="submit" className="btn btn-primary">
-          Login
-        </button>
-      </div>
-    </form>
+    </div>
   );
 };
 
