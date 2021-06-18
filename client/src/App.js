@@ -10,7 +10,7 @@ import NoPageFound from './components/NoPageFound';
 const App = () => {
   return (
     <Router>
-        <Navbar />
+      <Navbar />
       <div className='container mt-3'>
         <Switch>
           <Route exact path='/' component={Home} />
