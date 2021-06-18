@@ -2,12 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ItemSchema = new Schema({
-    sellerId: {
+    seller: {
         type: Schema.Types.ObjectId,
         ref: 'users'
-    },
-    user: {
-        type: String
     },
     price: {
         type: Number,
