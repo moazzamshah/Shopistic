@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
@@ -110,3 +111,16 @@ export const Login = () => {
     </div>
   );
 };
+=======
+import React from 'react'
+
+const Login = () => {
+  return (
+    <div>
+      <h2> Login Page </h2>
+    </div>
+  )
+}
+
+export default Login
+>>>>>>> origin/syed
