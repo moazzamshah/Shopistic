@@ -50,8 +50,6 @@ export const Login = () => {
       })
   }
 
-
-
   return (
     <div className="col-md-12">
       <div className="card card-container">
@@ -90,7 +88,7 @@ export const Login = () => {
             <p>Or sign in with:</p>
           </div>
           <div className="form-group">
-            <a href="http://localhost:8000/signin/passport/facebook" class="fb btn">
+            <a href="http://localhost:5000/signin/passport/facebook" class="fb btn">
               <i class="fa fa-facebook fa-fw"></i> Login with Facebook
             </a>
             <a href="http://localhost:8000/signin/passport/gmail" class="google btn">
