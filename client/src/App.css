@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
   background-color: black;
 }
@@ -37,6 +38,16 @@ label {
 
 .btn-primary, .navbar {
   background-color: #1b937b;
+=======
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  font-family: 'Roboto', sans-serif;
+>>>>>>> origin/syed
 }
 
 nav {

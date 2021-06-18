@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/Ahmad575-a/FINAL_PROJECT#readme",
   "dependencies": {
-    "concurrently": "^6.2.0"
+    "bootstrap": "^4.6.0",
+    "concurrently": "^6.2.0",
+    "react-bootstrap": "^1.6.1"
   }
 }
