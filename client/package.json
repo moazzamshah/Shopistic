@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
     "@hookform/resolvers": "^2.4.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -11,19 +10,10 @@
     "bootstrap": "^5.0.1",
     "emailjs-com": "^3.1.0",
     "jquery": "^3.6.0",
-=======
-    "@testing-library/jest-dom": "^5.13.0",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "bootstrap": "^4.6.0",
->>>>>>> origin/syed
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.1",
     "react-dom": "^17.0.2",
-<<<<<<< HEAD
     "react-hook-form": "^7.4.2",
-=======
->>>>>>> origin/syed
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-toastify": "^7.0.4",
