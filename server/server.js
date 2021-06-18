@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const passport = require('passport');
 const userRoute = require('./routes/user')
+const itemsRoute = require('./routes/items')
 
 // client connection
 const cors = require('cors')
@@ -27,12 +28,13 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 // initializing passport
-/* app.use(passport.initialize());
-require('./config/passport')(passport); */
+app.use(passport.initialize());
+require('./config/passport')(passport);
 
 
 // Routes
 app.use('/user' , userRoute)
+app.use('/items' , itemsRoute)
 
 //! listen app with port
 app.listen(PORT, () => {
