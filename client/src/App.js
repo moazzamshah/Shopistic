@@ -1,11 +1,21 @@
-import React from 'react'
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 
-const App = () => {
+import React from 'react'
+import { Register } from './components/Register'
+import  {Login}  from './components/Login'
+
+export default function App() {
   return (
-    <div>
-      Final Project
+    <div className='App'>
+    <h1 className='text-center'>Register Form</h1>
+      <Register />
+
+      <div className='container'>
+        <h1 className='text-center'>Login Form</h1>
+        <Login />
+      </div>
+      
     </div>
   )
 }
-
-export default App

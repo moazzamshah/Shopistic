@@ -1,7 +1,3 @@
-body {
-  background-color: black;
-}
-
 label {
   display: block;
   margin-top: 10px;
@@ -33,12 +29,4 @@ label {
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
-}
-
-.btn-primary, .navbar {
-  background-color: #1b937b;
-}
-
-nav {
-  background-color: #1b937b;
 }
