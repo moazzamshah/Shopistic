@@ -1,26 +1,3 @@
-<<<<<<< HEAD
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
-
-import React from 'react'
-import { Register } from './components/Register'
-import  {Login}  from './components/Login'
-
-export default function App() {
-  return (
-    <div className='App'>
-    <h1 className='text-center'>Register Form</h1>
-      <Register />
-
-      <div className='container'>
-        <h1 className='text-center'>Login Form</h1>
-        <Login />
-      </div>
-      
-    </div>
-  )
-}
-=======
 import React from 'react';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -30,6 +7,7 @@ import About from './components/About';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import NoPageFound from './components/NoPageFound';
+
 const App = () => {
   return (
     <Router>
@@ -49,4 +27,3 @@ const App = () => {
 };
 
 export default App;
->>>>>>> origin/syed
