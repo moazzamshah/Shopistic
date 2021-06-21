@@ -7,7 +7,7 @@ import '../css/login.css';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 
-export const Login = () => {
+const Login = () => {
   // YUP validation
   const validationSchema = Yup.object().shape({
     email: Yup.string().required('Email is required').email('Email is invalid'),
@@ -103,10 +103,11 @@ export const Login = () => {
             </a>
           </div>
           <p className='forgot-password text-left'>
-            New to Storeverse <a href='/register'> Register?</a>
+            New to Storeverse <a href='/signup'> Register?</a>
           </p>
         </form>
       </div>
     </div>
   );
 };
+export default Login;
