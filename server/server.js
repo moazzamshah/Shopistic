@@ -3,6 +3,7 @@ const app = express();
 const passport = require('passport');
 const userRoute = require('./routes/user')
 const itemsRoute = require('./routes/items')
+const cartRoute = require('./routes/cart')
 
 // client connection
 const cors = require('cors')
@@ -35,6 +36,7 @@ require('./config/passport')(passport);
 // Routes
 app.use('/user' , userRoute)
 app.use('/items' , itemsRoute)
+app.use('/cart' , cartRoute)
 
 //! listen app with port
 app.listen(PORT, () => {
