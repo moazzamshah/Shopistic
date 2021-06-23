@@ -45,7 +45,7 @@ body {
 }
 .container {
   flex: 1;
-  min-height: 30vh;
+  min-height: 10vh;
 }
 /* Footer main */
 .ft-main {
