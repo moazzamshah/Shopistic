@@ -4,9 +4,11 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Pricing from './components/Pricing';
 import About from './components/About';
-import Login from './components/Login';
-import Signup from './components/Signup';
+import Login from './components/auth/Login';
+import Signup from './components/auth/Signup';
 import NoPageFound from './components/NoPageFound';
+import Footer from './components/Footer/Footer';
+
 
 const App = () => {
   return (
@@ -22,7 +24,9 @@ const App = () => {
           <Route component={NoPageFound} />
         </Switch>
       </div>
+      <Footer/>
     </Router>
+    
   );
 };
 
