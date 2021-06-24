@@ -6,13 +6,13 @@ export default function Footer() {
    <div>
     <div className="container"></div>
     {/* Footer main */}
-    <footer>
+    <footer className="footer">
       <section className="ft-main">
         <div className="ft-main-item">
           <h2 className="ft-title">About</h2>
           <ul>
             <li><a href="#">Services</a></li>
-            <li><a href="#">Pricing</a></li>
+            <li><a href="/pricing">Pricing</a></li>
             <li><a href="#">Customers</a></li>
             <li><a href="#">Careers</a></li>
           </ul>
