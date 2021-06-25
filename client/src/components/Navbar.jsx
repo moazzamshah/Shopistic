@@ -6,7 +6,7 @@ const NavBar = () => {
       {/* ================ BRAND ================ */}
 
       <Navbar.Brand className='font-italic' href='/'>
-        StoreVerse
+        Shopistic
       </Navbar.Brand>
       <Navbar.Toggle aria-controls='responsive-navbar-nav' />
       <Navbar.Collapse id='responsive-navbar-nav'>
@@ -18,7 +18,7 @@ const NavBar = () => {
             </NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item href='#partner'>Our partners</NavDropdown.Item>
-            <NavDropdown.Item href='/about'>About us</NavDropdown.Item>
+            <NavDropdown.Item href='/about'>Who we are?</NavDropdown.Item>
           </NavDropdown>
 
           <Nav.Link href='#features'>Features</Nav.Link>
