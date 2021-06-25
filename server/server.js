@@ -3,7 +3,11 @@ const app = express();
 const passport = require('passport');
 const userRoute = require('./routes/user')
 const itemsRoute = require('./routes/items')
+
 const cartRoute = require('./routes/cart')
+
+const passRoute = require('./routes/fbRoute')
+
 
 // client connection
 const cors = require('cors')
@@ -38,7 +42,11 @@ require('./config/passport')(passport);
 // Routes
 app.use('/user' , userRoute)
 app.use('/items' , itemsRoute)
+
 app.use('/cart' , cartRoute)
+
+app.use('/passport', passRoute); //passport js facebook route
+
 
 //! listen app with port
 app.listen(PORT, () => {

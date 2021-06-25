@@ -89,14 +89,11 @@ const Login = () => {
             <p>Or sign in with:</p>
           </div>
           <div className='form-group'>
-            <a
-              href='http://localhost:5000/signin/passport/facebook'
-              class='fb btn'
-            >
+            <a href='http://localhost:8000/passport/facebook' class='fb btn'>
               <i class='fa fa-facebook fa-fw'></i> Login with Facebook
             </a>
             <a
-              href='http://localhost:8000/signin/passport/gmail'
+              href='http://localhost:8000/passport/auth/google'
               class='google btn'
             >
               <i class='fa fa-google fa-fw'></i> Login with Gmail
