@@ -2,6 +2,7 @@ const express = require("express")
 const router = express.Router()
 const Item = require('../models/Item');
 const passport = require('passport')
+const User = require('../models/User')
 
 // get all the products
 router.get("/", (req, res) => {
@@ -38,5 +39,42 @@ router.post('/create',
     }
 );
 
+// get a single product
+router.get("/:item_id", (req, res) => {
+    Item.findById(req.params.item_id)
+        .then(item => res.json(item))
+        .catch(err =>
+            res.status(404).json({ noItemsFound: "No item found with that ID" })
+        );
+});
+
+// update the products
+router.patch("/:id", (req, res) => {
+    Item.findOneAndUpdate({ _id: req.params.id },
+        {
+            $set:
+            {
+                title: req.body.title,
+                description: req.body.description,
+                price: req.body.price,
+                category: req.body.category,
+                picture: req.body.picture,
+            }
+        }).then(item => {
+            if (item) {
+                User.findById(item.seller)
+                    .then(user => {
+                        if (user) {
+                            const filter = {
+                                _id: user._id,
+                                name: user.name,
+                                email: user.email
+                            }
+                            res.json({ item, user: filter })
+                        }
+                    })
+            }
+        })
+});
 
 module.exports = router
