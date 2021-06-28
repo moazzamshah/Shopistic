@@ -7,6 +7,7 @@ import About from './components/About';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import NoPageFound from './components/NoPageFound';
+import Contact from './components/Contact/Contact';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path='/pricing' component={Pricing} />
           <Route path='/about' component={About} />
           <Route path='/login' component={Login} />
+          <Route path='/contact' component={Contact} />
           <Route exact path='/signup' component={Signup} />
           <Route component={NoPageFound} />
         </Switch>

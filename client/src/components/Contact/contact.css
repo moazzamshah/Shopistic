@@ -1,0 +1,30 @@
+.btn-my {
+ display: inline-block;
+ background: #212529;
+ color: #fff;
+ border: none;
+ padding: 10px 20px;
+ border-radius: 5px;
+ cursor: pointer;
+ text-decoration: none;
+ font-size: 1rem;
+}
+.btn-my:focus {
+ outline: none;
+}
+.btn-my:active {
+ transform: scale(0.98);
+}
+
+.btn-my:hover {
+ background-color: #333;
+ color: #fff;
+}
+
+hr {
+  color: #777;
+}
+textarea {
+  max-height: 200px;
+}
+
