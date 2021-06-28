@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
-import '../css/login.css';
+import '../../styles/login.css';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
@@ -96,7 +96,7 @@ const Login = () => {
               href='http://localhost:8000/passport/auth/google'
               class='google btn'
             >
-              <i class='fa fa-google fa-fw'></i> Login with Gmail
+              <i class='fab fa-google fa-fw'></i> Login with Gmail
             </a>
           </div>
           <p className='forgot-password text-left'>

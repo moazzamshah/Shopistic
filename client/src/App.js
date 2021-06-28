@@ -4,17 +4,18 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Pricing from './components/Pricing';
 import About from './components/About';
-import Login from './components/Login';
-import Signup from './components/Signup';
+import Login from './components/auth/Login';
+import Signup from './components/auth/Signup';
 import NoPageFound from './components/NoPageFound';
-import Contact from './components/Contact/Contact';
+import Footer from './components/Footer/Footer';
+import './App.css';
 
 const App = () => {
   return (
-    <Router>
+    <Router >
       <Navbar />
-      <div className='container mt-3'>
-        <Switch>
+      <div className='content'>
+        <Switch className='container'>
           <Route exact path='/' component={Home} />
           <Route path='/pricing' component={Pricing} />
           <Route path='/about' component={About} />
@@ -23,8 +24,11 @@ const App = () => {
           <Route exact path='/signup' component={Signup} />
           <Route component={NoPageFound} />
         </Switch>
+        
       </div>
+      <Footer className='footer'/>
     </Router>
+    
   );
 };
 
