@@ -12,14 +12,11 @@ router.get(
     failureRedirect: 'http://localhost:8000/passport/failure',
   }),
   (req, res) => {
-    res.send(` <h1> Hello ${req.user.name} 👋🏼  </h1> <p> You are successfully logged in 🎉 </p> `);
+    res.send(
+      ` <h1> Hello ${req.user.name} 👋🏼  </h1> <p> You are successfully logged in 🎉 </p> `
+    );
   }
 );
-
-
-
-
-
 
 // route for logout function
 router.get('/passport/logout', function (req, res) {
@@ -45,21 +42,9 @@ router.get(
   }
 );
 
-
-
 router.get('/failure', (req, res) => {
   res.json(' Login Failed 🙁 ');
 });
-
-
-
-
-
-
-
-
-
-
 
 // creating a user for testing
 router.post('/register/user', async (req, res) => {
