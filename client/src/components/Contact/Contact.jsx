@@ -9,8 +9,6 @@ const Contact = () => {
     email: '',
     message: '',
   });
-
-
   // handling the state value
   const handleInput = (e) => {
     const { name, value } = e.target;
