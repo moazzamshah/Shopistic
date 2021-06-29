@@ -8,6 +8,7 @@ import Login from './components/auth/Login';
 import Signup from './components/auth/Signup';
 import NoPageFound from './components/NoPageFound';
 import Footer from './components/Footer/Footer';
+import Contact from './components/Contact/Contact'
 import './App.css';
 
 const App = () => {
