@@ -3,11 +3,10 @@ const app = express();
 const passport = require('passport');
 const userRoute = require('./routes/user')
 const itemsRoute = require('./routes/items')
-
 const cartRoute = require('./routes/cart')
-
 const passRoute = require('./routes/fbRoute')
 const contactRoute = require('./routes/contactRoute');
+const reviewRoute = require('./routes/review')
 
 
 // client connection
@@ -45,7 +44,7 @@ app.use('/user' , userRoute)
 app.use('/items' , itemsRoute)
 
 app.use('/cart' , cartRoute)
-
+app.use('/review' , reviewRoute)
 app.use('/passport', passRoute); //passport js facebook route
 app.use('/contact', contactRoute); //route for contact us page
 
