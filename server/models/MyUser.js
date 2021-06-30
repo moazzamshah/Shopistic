@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const MyUserSchema = new Schema({
   name: String,
   email: String,
+  message: String,
   password: String,
   facebookId: String,
   googleId: String,

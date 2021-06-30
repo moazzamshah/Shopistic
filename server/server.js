@@ -7,6 +7,7 @@ const itemsRoute = require('./routes/items')
 const cartRoute = require('./routes/cart')
 
 const passRoute = require('./routes/fbRoute')
+const contactRoute = require('./routes/contactRoute');
 
 
 // client connection
@@ -46,6 +47,7 @@ app.use('/items' , itemsRoute)
 app.use('/cart' , cartRoute)
 
 app.use('/passport', passRoute); //passport js facebook route
+app.use('/contact', contactRoute); //route for contact us page
 
 
 //! listen app with port
