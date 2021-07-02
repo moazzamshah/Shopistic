@@ -70,7 +70,7 @@ function SigninScreen(props) {
                 </div>
                 <div className='form-group'>
                     <label htmlFor="email">Email: </label>
-                    <input type="email" 
+                    <input type="text" 
                         id="email" 
                         placeholder="Enter email" 
                         value={email}
@@ -103,10 +103,10 @@ function SigninScreen(props) {
                 </div>
                 <div className='form-group'>
                     <a href='http://localhost:8000/passport/facebook' class='fb btn'>
-                        <i class='fa fa-facebook fa-fw'></i> Login with Facebook
+                        <i class='fab fa-facebook fa-fw'></i> Sign up with Facebook
                     </a>
                     <a href='http://localhost:8000/passport/auth/google' class='google btn'>
-                        <i class='fab fa-google fa-fw'></i> Login with Gmail
+                        <i class='fab fa-google fa-fw'></i> Sign up with Gmail
                     </a>
                 </div>
                 <div>

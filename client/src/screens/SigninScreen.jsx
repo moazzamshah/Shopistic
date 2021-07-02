@@ -52,7 +52,7 @@ function SigninScreen(props) {
                 </div>
                 <div className='form-group'>
                     <label htmlFor="email">Email: </label>
-                    <input type="email"
+                    <input type="text"
                         id="email"
                         placeholder="Enter email"
                         value={email}
