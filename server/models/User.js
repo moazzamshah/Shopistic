@@ -26,6 +26,8 @@ const UserSchema = new Schema({
   },
   facebookId: String,
   googleId: String,
+  passwordResetToken : String,
+  passwordChangedAt : Date
 });
 
 module.exports = mongoose.model('users', UserSchema);
