@@ -1,15 +1,15 @@
 import React from 'react';
-import Navbar from './components/Navbar';
+
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from './components/Home';
-import Pricing from './components/Pricing';
-import About from './components/About';
-import Login from './components/auth/Login';
-import Signup from './components/auth/Signup';
-import NoPageFound from './components/NoPageFound';
-import Footer from './components/Footer/Footer';
-import Contact from './components/Contact/Contact'
-import './App.css';
+import Navbar from './screens/NavbarScreen';
+import HomeScreen from './screens/HomeScreen';
+import PricingScreen from './screens/PricingScreen';
+import AboutScreen from './screens/AboutScreen';
+import SigninScreen from './screens/SigninScreen';
+import SignupScreen from './screens/SignupScreen';
+import Contact from './screens/Contact/Contact';
+import Footer from './screens/Footer/Footer';
+
 
 const App = () => {
   return (
@@ -17,13 +17,12 @@ const App = () => {
       <Navbar />
       <div className='content'>
         <Switch className='container'>
-          <Route exact path='/' component={Home} />
-          <Route path='/pricing' component={Pricing} />
-          <Route path='/about' component={About} />
-          <Route path='/login' component={Login} />
+          <Route exact path='/' component={HomeScreen} />
+          <Route path='/PricingScreen' component={PricingScreen} />
+          <Route path='/about' component={AboutScreen} />
+          <Route path='/signin' component={SigninScreen} />
+          <Route exact path='/signup' component={SignupScreen} />
           <Route path='/contact' component={Contact} />
-          <Route exact path='/signup' component={Signup} />
-          <Route component={NoPageFound} />
         </Switch>
         
       </div>
