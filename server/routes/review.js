@@ -24,7 +24,7 @@ router.get("/", (req, res) => {
     Review.find()
         .sort({ date: -1 })
         .then(reviews => res.json(reviews))
-        .catch(err => res.status(404).json({ errorMsg: "No reviews found" }));
+        .catch(err => res.status(404).json({ errorMsg:err }));
 });
 
 // get the Reviews for a single product
@@ -32,7 +32,7 @@ router.get("/:id", (req, res) => {
     Review.find({ itemId: req.params.id })
         .sort({ date: -1 })
         .then(reviews => res.json(reviews))
-        .catch(err => res.status(404).json({ errorMsg: "No reviews found" }));
+        .catch(err => res.status(404).json({ errorMsg:err }));
 });
 
 
