@@ -9,6 +9,7 @@ import Signup from './components/auth/Signup';
 import NoPageFound from './components/NoPageFound';
 import Footer from './components/Footer/Footer';
 import Contact from './components/Contact/Contact'
+import ResetPassword from './components/auth/ResetPassword';
 import './App.css';
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
           <Route path='/login' component={Login} />
           <Route path='/contact' component={Contact} />
           <Route exact path='/signup' component={Signup} />
+          <Route path='/resetpassword/:token' component={ResetPassword} />
           <Route component={NoPageFound} />
         </Switch>
         
