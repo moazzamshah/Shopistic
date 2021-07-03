@@ -77,4 +77,15 @@ router.patch("/:id", (req, res) => {
         })
 });
 
+// Deleting the product by the User
+router.delete("/:item_id", passport.authenticate('jwt', { session: false }), (req, res) => {
+    Item.findByIdAndRemove(req.params.item_id, err => {
+        if (err) res.send(err);
+        else res.json({
+            message: "the product has been deleted"
+        });
+    });
+});
+
+
 module.exports = router

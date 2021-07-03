@@ -9,6 +9,7 @@ import SigninScreen from './screens/SigninScreen';
 import SignupScreen from './screens/SignupScreen';
 import Contact from './screens/Contact/Contact';
 import Footer from './screens/Footer/Footer';
+import ResetPassword from './components/auth/ResetPassword';
 
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
           <Route path='/signin' component={SigninScreen} />
           <Route exact path='/signup' component={SignupScreen} />
           <Route path='/contact' component={Contact} />
+          <Route path='/resetpassword/:token' component={ResetPassword} />
         </Switch>
         
       </div>
