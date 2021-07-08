@@ -7,7 +7,6 @@ module.exports = function validateRegisteration(data) {
 	data.name = validText(data.name) ? data.name : '';
 	data.email = validText(data.email) ? data.email : '';
 	data.password = validText(data.password) ? data.password : '';
-	data.password2 = validText(data.password2) ? data.password2 : '';
 
 	if (!Validator.isLength(data.name, { min: 2, max: 20 })) {
 		errors.name = 'Name must be between 2-20 characters';
@@ -31,14 +30,6 @@ module.exports = function validateRegisteration(data) {
 
 	if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
 		errors.password = 'Password must be at least 6 characters';
-	}
-
-	if (Validator.isEmpty(data.password2)) {
-		errors.password2 = 'Confirm Password field is required';
-	}
-
-	if (!Validator.equals(data.password, data.password2)) {
-		errors.password2 = 'Passwords did not match';
 	}
 
 	return {
