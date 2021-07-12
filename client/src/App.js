@@ -10,6 +10,7 @@ import SignupScreen from './screens/SignupScreen';
 import Contact from './screens/Contact/Contact';
 import Footer from './screens/Footer/Footer';
 import ResetPassword from './components/auth/ResetPassword';
+import ForgotPassword from './components/auth/ForgotPassword';
 
 
 const App = () => {
@@ -25,12 +26,13 @@ const App = () => {
           <Route exact path='/signup' component={SignupScreen} />
           <Route path='/contact' component={Contact} />
           <Route path='/resetpassword/:token' component={ResetPassword} />
+          <Route path='/forgetpassword' component={ForgotPassword} />
         </Switch>
-        
+
       </div>
-      <Footer className='footer'/>
+      <Footer className='footer' />
     </Router>
-    
+
   );
 };
 
