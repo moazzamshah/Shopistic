@@ -7,6 +7,7 @@ const validateRegisteration = require('../validation/register')
 const validateLogin = require('../validation/login')
 const sgMail = require('@sendgrid/mail');
 
+
 router.post("/register", (req, res) => {
     const { errors, isValid } = validateRegisteration(req.body);
 
@@ -107,7 +108,6 @@ router.post('/forgetpassword', async (req, res) => {
         templateId: process.env.templateId,
         dynamicTemplateData: {
 
-
             message: resetMessage
 
         }
@@ -131,19 +131,103 @@ router.get('/resetPassword/:token', async (req, res) => {
     try {
         const user = await User.findOne({ passwordResetToken: token });
         if (user) {
-            res.json({ msg: 'token is correct', token })
+            jwt.verify(user.passwordResetToken, process.env.JWT_RESET_SECRET, (err, decode) => {
+                console.log(decode)
+                User.findById(decode.id, function (err, user) {
+                    if (err) {
+                        return res.status(500).send("An unexpected error occurred");
+                    }
+    
+                    if (!user){
+                        return res.status(404).send({ message: `We were unable to find a user for this token.` });
+                    }
+                    const id = decode.id
+                    return res.json({ msg: 'token is correct', token, id })
+                })
+            })
+            
         }
         else {
-            res.status(500).json({ msg: 'invalid token !!' })
+            res.status(500).json({ msg: 'invalid token or maybe your token expired!!' })
         }
+        
 
     } catch (error) {
         res.status(500).json({ msg: 'server error !!' })
 
     }
 
+})
+
+router.post('/resetPassword/password/:id', (req, res) => {
+    const id = req.params.id
+    User.findByIdAndUpdate(id,{ password: req.body.password }, function (err, user) {
+        console.log(user.password, " password")
+        bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(user.password, salt, (err, hash) => {
+                if (err) throw err;
+                user.password = hash;
+                console.log(user.password, " password2")
+                user.passwordResetToken = "";
+                user.save()
+                const msg = {
+                    to: user.email,
+                    from: 'a.alghetheth@gmail.com',
+                    subject: "Your password has been changed",
+                    html: `<p>This is a confirmation that the password for your account ${user.email} has just been changed. </p>`,
+                };
+                sgMail.send(msg).catch(() => {
+                    return res.status(503).send({
+                        message: `Can not send an email to ${user.email}, try again!!.`,
+                    });
+                });
+                res.json('successfully changed the password')
+                
+            })
+        })
+        // Send mail confirming password change to the user
+        
+    
+
+        
+        // 
+        //Hash new password
+        /* const salt = bcrypt.genSalt(10);
+        const hashPassword = bcrypt.hash(req.body.password, salt) */
+        /* user.hashPassword()
+            .then(() =>
+                // Save updated user to the database
+                user.save(function (err) {
+                    if (err) {
+                        return res.status(500).send({ message: "An unexpected error occurred" });
+                    }
+                    // Send mail confirming password change to the user
+                    const msg = {
+                        to: user.email,
+                        from: 'a.alghetheth@gmail.com',
+                        subject: "Your password has been changed",
+                        html: `<p>This is a confirmation that the password for your account ${user.email} has just been changed. </p>`,
+                    };
+                    sgMail.send(msg).catch(() => {
+                        return res.status(503).send({
+                            message: `Can not send an email to ${user.email}, try again!!.`,
+                        });
+                    });
+                    return res.status(200).send({ message: "Password has been successfully changed." });
+                })
+            ); */
+    })
+    /* console.log(user.passwordResetToken, "new token") */
+
+
+
+
+
+
 
 })
+
+
 
 
 
