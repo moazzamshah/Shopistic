@@ -104,13 +104,8 @@ router.post('/forgetpassword', async (req, res) => {
     const msg = {
         to: user.email,
         from: 'a.alghetheth@gmail.com',
-        subject: 'Your password reset Link calid only for 60 minutes ',
-        templateId: process.env.templateId,
-        dynamicTemplateData: {
-
-            message: resetMessage
-
-        }
+        subject: 'Your password reset Link valid only for 60 minutes ',
+        text: resetMessage
 
     }
     sgMail
@@ -170,6 +165,7 @@ router.post('/resetPassword/password/:id', (req, res) => {
                 console.log(user.password, " password2")
                 user.passwordResetToken = "";
                 user.save()
+                // Send mail confirming password change to the user
                 const msg = {
                     to: user.email,
                     from: 'a.alghetheth@gmail.com',
@@ -185,50 +181,9 @@ router.post('/resetPassword/password/:id', (req, res) => {
                 
             })
         })
-        // Send mail confirming password change to the user
         
-    
-
-        
-        // 
-        //Hash new password
-        /* const salt = bcrypt.genSalt(10);
-        const hashPassword = bcrypt.hash(req.body.password, salt) */
-        /* user.hashPassword()
-            .then(() =>
-                // Save updated user to the database
-                user.save(function (err) {
-                    if (err) {
-                        return res.status(500).send({ message: "An unexpected error occurred" });
-                    }
-                    // Send mail confirming password change to the user
-                    const msg = {
-                        to: user.email,
-                        from: 'a.alghetheth@gmail.com',
-                        subject: "Your password has been changed",
-                        html: `<p>This is a confirmation that the password for your account ${user.email} has just been changed. </p>`,
-                    };
-                    sgMail.send(msg).catch(() => {
-                        return res.status(503).send({
-                            message: `Can not send an email to ${user.email}, try again!!.`,
-                        });
-                    });
-                    return res.status(200).send({ message: "Password has been successfully changed." });
-                })
-            ); */
     })
-    /* console.log(user.passwordResetToken, "new token") */
-
-
-
-
-
-
-
 })
-
-
-
 
 
 
