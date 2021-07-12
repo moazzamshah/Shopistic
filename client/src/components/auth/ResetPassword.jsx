@@ -2,16 +2,27 @@ import { useState,useEffect } from "react";
 import { Form, Row, Col, Button, Alert } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import * as Yup from "yup";
+import { useDispatch, useSelector } from "react-redux";
+import { attemptResetPassword } from "../../actions/userAction";
 
 
 const ResetPassword = () => {
-  const [password, setPassword] = useState();
+  const [password, setPassword] = useState("");
+  const [id, setId] = useState("")
   const [success, setSuccess] = useState(null);
   const { token } = useParams();
+  const [isSubmited, setIsSubmited] = useState(null);
+  
+  const dispatch = useDispatch();
+  const validationSchema = Yup.object({
+    password: Yup.string().min(6).max(60).required("Required"),
+  });
   
   useEffect(() => {
-    axios.get(`http://localhost:8000/user/resetPassword/${token}`).then((res) => {
+    axios.get(`http://localhost:8000/api/user/resetPassword/${token}`).then((res) => {
       console.log(res.data);
+      setId(res.data.id)
       if(res.data){
         setSuccess(true)
       }
@@ -19,18 +30,26 @@ const ResetPassword = () => {
     });
   }, [])
 
-  const onSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    
+    dispatch(attemptResetPassword(password, id))
+    setIsSubmited(true);
   };
 
-  return (
+  return isSubmited ? (
+    <div className="container">
+      <h2>
+        your password has been rested Successfully.
+        <b>you will recive a confirmation email soon.</b>
+        It can take up to 5 min to receive our email.
+      </h2>
+    </div>
+  ) : (
     <div>
       <h1>Reset Password</h1>
-      { success ? <h3>your token is correct you can change your password</h3>: <h3> bad token </h3>}
-      <Row>
+      { success ? <Row>
         <Col md={{ span: 6, offset: 3 }}>
-          <Form onSubmit={onSubmit}>
+          <Form onSubmit={handleSubmit} validationSchema={validationSchema}>
             <Form.Group controlId="formBasicEmail">
               <Form.Control
                 onChange={(e) => setPassword(e.target.value)}
@@ -39,13 +58,13 @@ const ResetPassword = () => {
                 placeholder="Enter a new password"
               />
             </Form.Group>
-            {success && <Alert variant="success">{success}</Alert>}
             <Button variant="primary" type="submit">
               Submit
             </Button>
           </Form>
         </Col>
-      </Row>
+      </Row>: <h3> wrong token or your token already expired..!! </h3>}
+      
     </div>
   );
 };
