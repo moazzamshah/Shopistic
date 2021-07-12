@@ -3,7 +3,7 @@ import { Form, Row, Col, Button, Alert } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import * as Yup from "yup";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { attemptResetPassword } from "../../actions/userAction";
 
 
@@ -39,7 +39,7 @@ const ResetPassword = () => {
   return isSubmited ? (
     <div className="container">
       <h2>
-        your password has been rested Successfully.
+        your password has been reset Successfully.
         <b>you will recive a confirmation email soon.</b>
         It can take up to 5 min to receive our email.
       </h2>
