@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { USER_DETAILS_FAIL, USER_DETAILS_REQUEST, USER_DETAILS_SUCCESS, USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_SIGNIN_FAIL, USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNOUT, USER_UPDATE_PROFILE_FAIL, USER_UPDATE_PROFILE_REQUEST, USER_UPDATE_PROFILE_SUCCESS, RESET_USER } from '../constants/userConstants';
+import { USER_DETAILS_FAIL, USER_DETAILS_REQUEST, USER_DETAILS_SUCCESS, USER_REGISTER_FAIL, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_SIGNIN_FAIL, USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNOUT, USER_UPDATE_PROFILE_FAIL, USER_UPDATE_PROFILE_REQUEST, USER_UPDATE_PROFILE_SUCCESS, RESET_USER, RESET_USER_ERROR } from '../constants/userConstants';
 
 
 //register action 
@@ -101,8 +101,20 @@ export const attemptResetPassword = (password, id) => async (dispatch) => {
     try {
         const resetPassword = await axios.post(`http://localhost:8000/api/user/resetPassword/password/${id}`)
         await resetPassword(password, id)
-    } catch(error) {
-        dispatch(error.response.data.message)
+    } catch (error) {
+        dispatch({ type: RESET_USER_ERROR })
+    }
+
+};
+
+
+export const attemptSendResetPasswordLink = (email) => async (dispatch) => {
+    dispatch({ type: RESET_USER, payload: email });
+    try {
+        const sendResetPasswordLink = await axios.post(`http://localhost:8000/api/user/forgetpassword`, { email })
+        await sendResetPasswordLink(email)
+    } catch (error) {
+        dispatch({ type: RESET_USER_ERROR })
     }
 
 };
