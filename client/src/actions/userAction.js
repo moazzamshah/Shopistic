@@ -58,7 +58,7 @@ export const detailsUser = (userId) => async (dispatch, getState) => {
 
     try {
         //send ajax request 
-        const { data } = await axios.get(`/api/users/${userId}`, {
+        const { data } = await axios.get(`http://localhost:8000/api/user/${userId}`, {
             headers: {
                 Authorization: `Bearer ${userInfo?.token}`
             }
@@ -79,7 +79,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
 
     try {
         //send ajax request 
-        const { data } = await axios.put('/api/users/profile', user, {
+        const { data } = await axios.put('http://localhost:8000/api/user/profile', user, {
             headers: {
                 Authorization: `Bearer ${userInfo?.token}`
             }
@@ -99,7 +99,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
 export const attemptResetPassword = (password, id) => async (dispatch) => {
     dispatch({ type: RESET_USER, payload: { password, id } });
     try {
-        const resetPassword = await axios.post(`http://localhost:8000/api/user/resetPassword/password/${id}`)
+        const resetPassword = await axios.post(`http://localhost:8000/api/user/resetPassword/password/${id}`,{password})
         await resetPassword(password, id)
     } catch (error) {
         dispatch({ type: RESET_USER_ERROR })
