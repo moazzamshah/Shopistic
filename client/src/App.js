@@ -11,6 +11,7 @@ import Contact from './screens/Contact/Contact';
 import Footer from './screens/Footer/Footer';
 import ResetPassword from './components/auth/ResetPassword';
 import ForgotPassword from './components/auth/ForgotPassword';
+import ProfileScreen from './screens/ProfileScreen';
 
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
           <Route path='/contact' component={Contact} />
           <Route path='/resetpassword/:token' component={ResetPassword} />
           <Route path='/forgetpassword' component={ForgotPassword} />
+          <Route path='/profile' component={ProfileScreen} />
         </Switch>
 
       </div>
