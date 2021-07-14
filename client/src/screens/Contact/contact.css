@@ -1,6 +1,6 @@
 .btn-my {
  display: inline-block;
- background: #212529;
+ background: #1ea2b8;
  color: #fff;
  border: none;
  padding: 10px 20px;
@@ -17,14 +17,24 @@
 }
 
 .btn-my:hover {
- background-color: #333;
- color: #fff;
+  opacity: 0.9;
 }
 
-hr {
-  color: #777;
-}
+
 textarea {
-  max-height: 200px;
+  max-height: 150px;
+  min-height: 150px;
 }
 
+
+.icon-img {
+  display: block;
+  margin: auto;
+  width: 70px;
+}
+
+/* .btn-login {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+} */

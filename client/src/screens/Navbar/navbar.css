@@ -1,0 +1,16 @@
+.my-navbar {
+  width: 100%;
+  /* background: #333; */
+  background-color: rgb(252, 252, 252);
+}
+
+.my-navbar a {
+  font-size: 1.2rem;
+}
+
+.my-navbar a:hover {
+  color: #1ea2b8 !important;
+}
+
+
+

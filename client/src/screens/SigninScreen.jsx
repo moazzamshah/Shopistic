@@ -4,24 +4,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signin } from '../actions/userAction';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-import '../styles/login.css'
+// import '../styles/login.css'
 
 function SigninScreen(props) {
-    // set states for email and password 
+    // set states for email and password
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    // redirect user to shipping screen after sign in 
+    // redirect user to shipping screen after sign in
     //first check if there is redirect query param on the url
     const redirect = props.location.search ? props.location.search.split('=')[1] : '/';
 
-    //get userInfo from redux store 
+    //get userInfo from redux store
     const userSignin = useSelector(state => state.userSignin);
     const { userInfo, loading, error } = userSignin;
 
     const dispatch = useDispatch();
 
-    // handle login form submit 
+    // handle login form submit
     const submitHandler = (e) => {
         e.preventDefault();
         // signin action here

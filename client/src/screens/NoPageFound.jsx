@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 
 const NoPageFound = () => {
   return (
-    <div className='text-danger text-center mt-5'>
+    <div className='text-danger text-center' style = {{marginTop: '150px'}}>
       <h1>404 - Not Found!</h1>
-      <Link to='/' className='btn btn-dark'>Go Home</Link>
+      <Link to='/' className='btn btn-info mt-4'>Go Home</Link>
     </div>
   );
 }
