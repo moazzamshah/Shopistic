@@ -11,6 +11,8 @@ import Contact from './screens/Contact/Contact';
 import Footer from './screens/Footer/Footer';
 import ResetPassword from './components/auth/ResetPassword';
 import NoPageFound from './screens/NoPageFound';
+import ForgotPassword from './components/auth/ForgotPassword'
+import ProfileScreen from './screens/ProfileScreen'
 
 
 
@@ -27,6 +29,8 @@ const App = () => {
           <Route exact path='/signup' component={SignupScreen} />
           <Route path='/contact' component={Contact} />
           <Route path='/resetpassword/:token' component={ResetPassword} />
+          <Route path='/forgetpassword' component={ForgotPassword} />
+          <Route path='/profile' component={ProfileScreen} />
           <Route component={NoPageFound} />
         </Switch>
       </div>
