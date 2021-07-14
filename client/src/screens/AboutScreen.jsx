@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-const AboutScreeen = () => {
+const About = () => {
   return (
-    <div>
-      <h2> AboutScreeen Page </h2>
+    <div className='col-10 mx-auto mt-5'>
+      <h2> About Page </h2>
     </div>
-  )
-}
+  );
+};
 
-export default AboutScreeen
+export default About;
