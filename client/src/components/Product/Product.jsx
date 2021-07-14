@@ -12,8 +12,11 @@ function Product (props) {
             </Link>
             <div className='card-body'>
                 <Link to={`/product/${product._id}`}>
-                    <h2>{product.name}</h2>
+                    <h2>{product.title}</h2>
                 </Link>
+                <div>
+                    {product.description}
+                </div>
                 {/* Rating component */}
                 <Rating rating={product.rating} numReviews={product.numReviews} />
                 <div className='price'>${product.price}</div>

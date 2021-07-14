@@ -12,8 +12,9 @@ import {
     USER_UPDATE_PROFILE_FAIL, 
     USER_UPDATE_PROFILE_REQUEST,
     USER_UPDATE_PROFILE_RESET,
-    USER_UPDATE_PROFILE_SUCCESS
+    USER_UPDATE_PROFILE_SUCCESS, RESET_USER
 } from '../constants/userConstants';
+
 
 //user RegisterReducer 
 export const userRegisterReducer = (state = {}, action) => {
@@ -46,6 +47,7 @@ export const userSigninReducer = (state = {}, action) => {
     }
 };
 
+
 //User Details reducer
 export const userDetailsReducer = (state = {loading: true}, action) => {
     switch(action.type) {
@@ -76,3 +78,15 @@ export const userUpdateProfileReducer = (state = {}, action) => {
             return state;
     }
 };
+
+export const resetUserReducer = (state = {}, action) => {
+    switch(action.type) {
+        case RESET_USER:
+            return state;
+
+        default:
+            return state;
+    }
+};
+
+ 

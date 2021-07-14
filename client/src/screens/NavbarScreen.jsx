@@ -27,7 +27,7 @@ const NavBar = () => {
 
         {/* =============== NAV ITEMS ON RIGHT ================= */}
         <Nav className='ml-auto'>
-          <Nav.Link href='/login'>Login</Nav.Link>
+          <Nav.Link href='/signin'>Signin</Nav.Link>
           <Button href='/signup' variant='outline-info'>
             Register
           </Button>

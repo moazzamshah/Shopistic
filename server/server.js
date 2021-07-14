@@ -40,11 +40,11 @@ require('./config/passport')(passport);
 
 
 // Routes
-app.use('/user' , userRoute)
-app.use('/items' , itemsRoute)
+app.use('/api/user' , userRoute)
+app.use('/api/items' , itemsRoute)
 
-app.use('/cart' , cartRoute)
-app.use('/review' , reviewRoute)
+app.use('/api/cart' , cartRoute)
+app.use('/api/review' , reviewRoute)
 app.use('/passport', passRoute); //passport js facebook route
 app.use('/contact', contactRoute); //route for contact us page
 
