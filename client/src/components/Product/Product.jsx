@@ -4,6 +4,7 @@ import Rating from '../Rating';
 
 function Product (props) {
     const { product } = props;
+    console.log(product ,"product")
 
     return (
         <div className='card'>
