@@ -13,6 +13,9 @@ import ResetPassword from './components/auth/ResetPassword';
 import NoPageFound from './screens/NoPageFound';
 import ForgotPassword from './components/auth/ForgotPassword'
 import ProfileScreen from './screens/ProfileScreen'
+import PlaceOrderScreen from './screens/PlaceOrderScreen'
+// import Product from './components/Product/Product'
+import Cart from './screens/CartScreen'
 
 
 
@@ -31,6 +34,9 @@ const App = () => {
           <Route path='/resetpassword/:token' component={ResetPassword} />
           <Route path='/forgetpassword' component={ForgotPassword} />
           <Route path='/profile' component={ProfileScreen} />
+          <Route path='/order' component={PlaceOrderScreen} />
+          {/* <Route path='/product/:id' component={Product} /> */}
+          <Route path='/cart' component={Cart} />
           <Route component={NoPageFound} />
         </Switch>
       </div>
