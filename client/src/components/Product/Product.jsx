@@ -1,10 +1,26 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
 import Rating from '../Rating';
+import { detailsProduct } from '../../actions/productActions';
 
 function Product (props) {
-    const { product } = props;
-    console.log(product ,"product")
+    let { product} = props;
+
+
+    // const dispatch = useDispatch()
+    /* product = dispatch(detailsProduct()) */
+    
+    // const productDetails = useSelector(state => state.productDetails);
+    /* product = productDetails.product */
+    /* console.log(productDetails, "product details")
+   
+
+    const test = (productID) =>{
+        dispatch(detailsProduct(productID));
+        // useHistory.push(`/${product._id}`)
+    } */
+
 
     return (
         <div className='card'>
@@ -22,6 +38,7 @@ function Product (props) {
                 <Rating rating={product.rating} numReviews={product.numReviews} />
                 <div className='price'>${product.price}</div>
             </div>
+            {/* <button type="submit" onClick={()=> test(product._id)} >product info</button> */}
         </div>
     );
 }
