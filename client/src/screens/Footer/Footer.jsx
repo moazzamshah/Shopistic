@@ -1,61 +1,65 @@
 import React from 'react';
 import './footer.css';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
-    <footer className='main-footer mt-5'>
-      <section className='ft-main my-1 col-10 mx-auto '>
+    <footer className='main-footer'>
+      <Row className='ft-main col-11 mx-auto'>
         <div className='ft-main-item'>
-          <h2 className='ft-title'>About</h2>
+          <h3 className='ft-title'>About</h3>
           <ul>
             <li>
-              <a href='#'>Services</a>
+              <Link as='#'>Services</Link>
             </li>
             <li>
-              <a href='/pricing'>Pricing</a>
+              <Link as='/pricing'>Pricing</Link>
             </li>
             <li>
-              <a href='#'>Customers</a>
+              <Link as='#'>Customers</Link>
             </li>
             <li>
-              <a href='#'>Careers</a>
+              <Link as='#'>Careers</Link>
             </li>
           </ul>
         </div>
+
         <div className='ft-main-item'>
-          <h2 className='ft-title'>Resources</h2>
+          <h3 className='ft-title'>Resources</h3>
           <ul>
             <li>
-              <a href='#'>Docs</a>
+              <Link as='#'>Docs</Link>
             </li>
             <li>
-              <a href='#'>Blog</a>
+              <Link as='#'>Blog</Link>
             </li>
             <li>
-              <a href='#'>Shops</a>
+              <Link as='#'>Shops</Link>
             </li>
             <li>
-              <a href='#'>Webinars</a>
+              <Link as='#'>Webinars</Link>
             </li>
           </ul>
         </div>
+
         <div className='ft-main-item'>
-          <h2 className='ft-title'>Contact</h2>
+          <h3 className='ft-title'>Contact</h3>
           <ul>
             <li>
-              <a href='#'>Help</a>
+              <Link as='#'>Help</Link>
             </li>
             <li>
-              <a href='#'>Sales</a>
+              <Link as='#'>Sales</Link>
             </li>
             <li>
-              <a href='#'>Advertise</a>
+              <Link as='#'>Advertise</Link>
             </li>
           </ul>
         </div>
+
         <div className='ft-main-item'>
-          <h2 className='ft-title'>Stay Updated</h2>
+          <h3 className='ft-title'>Stay Updated</h3>
           <p>Subscribe to our newsletter to get our latest news</p>
           <Form.Group className='d-flex flex-column' controlId='formBasicEmail'>
             <Form.Control type='email' placeholder='Enter email' name='email' />
@@ -65,50 +69,49 @@ export default function Footer() {
             </Button>
           </Form.Group>
         </div>
-      </section>
+      </Row>
+      <hr className='bg-light' />
       {/* Footer social */}
       <section className='ft-social '>
-        <hr className='bg-light' />
         <ul className='d-flex justify-content-center align-items-center'>
           <li>
-            <a href='#'>
+            <Link as='#'>
               <i className='fa fa-facebook px-2'></i>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href='#'>
+            <Link as='#'>
               <i className='fa fa-twitter px-2'></i>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href='#'>
+            <Link as='#'>
               <i className='fa fa-instagram px-2'></i>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href='#'>
+            <Link as='#'>
               <i className='fa fa-github px-2'></i>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href='#'>
+            <Link as='#'>
               <i className='fa fa-linkedin px-2'></i>
-            </a>
+            </Link>
           </li>
-
         </ul>
       </section>
 
       {/* Footer legal  */}
       <section className='ft-legal'>
-        <ul className='col-10 mx-auto d-flex justify-content-center align-items-center'>
+        <ul className='col-11 mx-auto d-flex justify-content-between align-items-center'>
           <li>
-            <a href='#'>Terms &amp; Conditions</a>
+            <Link as='#'>Terms &amp; Conditions</Link>
           </li>
           <li>
-            <a className='px-4' href='#'>
+            <Link as='#'>
               Privacy Policy
-            </a>
+            </Link>
           </li>
           <li>&copy; 2021 Copyright ASA</li>
         </ul>
