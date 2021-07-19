@@ -25,6 +25,7 @@ function HomeScreen() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+
   return (
     <Container id='header' className='col-10 mx-auto'>
       <Row className='d-flex align-items-center justify-content-between mt-5 py-5 main__row'>
@@ -45,7 +46,6 @@ function HomeScreen() {
           <img className='animated w-100' src={HomeImage} alt='img' />
         </Col>
       </Row>
-
       <div>
         {loading ? (
           <LoadingBox />

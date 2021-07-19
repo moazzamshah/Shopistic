@@ -12,6 +12,9 @@ import ResetPassword from './components/auth/ResetPassword';
 import NoPageFound from './screens/NoPageFound';
 import ForgotPassword from './components/auth/ForgotPassword';
 import ProfileScreen from './screens/ProfileScreen';
+import PlaceOrderScreen from './screens/PlaceOrderScreen'
+import singleProduct from './components/Product/single_product'
+import Cart from './screens/CartScreen'
 
 
 
@@ -29,6 +32,9 @@ const App = () => {
           <Route path='/resetpassword/:token' component={ResetPassword} />
           <Route path='/forgot' component={ForgotPassword} />
           <Route path='/profile' component={ProfileScreen} />
+          <Route path='/order' component={PlaceOrderScreen} />
+          <Route path='/product/:id' component={singleProduct} /> 
+          <Route path='/cart' component={Cart} />
           <Route component={NoPageFound} />
         </Switch>
       </div>

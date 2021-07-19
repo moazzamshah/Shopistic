@@ -8,9 +8,9 @@ export const createOrder = (order) => async (dispatch, getState ) => {
     try {
         //get userinfo from redux store using getState that returns the whole redux store 
         const { userSignin: {userInfo}} = getState();
-        const { data } = await axios.post('/api/orders', order, {
+        const { data } = await axios.post('http://localhost:8000/api/orders/', order, {
             headers: {
-                Authorization: `Bearer ${userInfo.token}`,
+                Authorization: `${userInfo.token}`,
             },
         });
 
@@ -88,9 +88,9 @@ export const listOrderMine = () => async (dispatch, getState) => {
     
     try{
         // send ajax request to get the user's orders 
-        const { data } = await axios.get('/api/orders/mine', {
+        const { data } = await axios.get('http://localhost:8000/api/orders/mine', {
             headers: {
-                Authorization: `Bearer ${userInfo.token}`,
+                Authorization: `${userInfo.token}`,
             },
         });
         dispatch({ type: ORDER_MINE_LIST_SUCCESS, payload: data });
