@@ -34,7 +34,8 @@ function ProfileScreen() {
             //reset user profile update 
             dispatch({type:USER_UPDATE_PROFILE_RESET});
             //dispatch actions to get user details 
-            dispatch(detailsUser(userInfo._id));
+            dispatch(detailsUser(userInfo.userId));
+            console.log(userInfo)
         } else {
             setName(user.name);
             setEmail(user.email);
@@ -50,6 +51,7 @@ function ProfileScreen() {
         } else {
             //disptach update profile
             dispatch(updateUserProfile({ userId: user._id, name, email, password }));
+            window.location.href = '/profile';
         }
     };
 

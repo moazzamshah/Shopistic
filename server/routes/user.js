@@ -73,7 +73,8 @@ router.post("/login", (req, res) => {
                 jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 3600 }, (err, token) => {
                     res.json({
                         success: true,
-                        token: "Bearer " + token
+                        token: "Bearer " + token,
+                        userId: user.id
                     });
                 });
             } else {
@@ -166,7 +167,7 @@ router.post('/resetPassword/password/:id', (req, res) => {
             bcrypt.hash(req.body.password, salt, (err, hash) => {
                 if (err) throw err;
                 console.log(user.password, " password2")
-                User.findByIdAndUpdate(id, { password: hash, passwordResetToken:"" }, (err, user) => {
+                User.findByIdAndUpdate(id, { password: hash, passwordResetToken: "" }, (err, user) => {
                     // Send mail confirming password change to the user
                     const msg = {
                         to: user.email,
@@ -175,14 +176,14 @@ router.post('/resetPassword/password/:id', (req, res) => {
                         html: `<p>This is a confirmation that the password for your account ${user.email} has just been changed. </p>`,
                     };
                     sgMail.send(msg)
-                    .then(()=>{
-                        res.json('successfully changed the password')
-                    })
-                    .catch(() => {
-                        return res.status(503).send({
-                            message: `Can not send an email to ${user.email}, try again!!.`,
+                        .then(() => {
+                            res.json('successfully changed the password')
+                        })
+                        .catch(() => {
+                            return res.status(503).send({
+                                message: `Can not send an email to ${user.email}, try again!!.`,
+                            });
                         });
-                    });
                 })
 
 
@@ -192,15 +193,15 @@ router.post('/resetPassword/password/:id', (req, res) => {
     })
 })
 
-// /api/users/details 
+// user Profile details
 router.get('/profile/:id', async (req, res) => {
     //get user info from User db
     const user = await User.findById(req.params.id);
     //send user obj backto front end if there is user 
-    if(user) {
+    if (user) {
         res.json(user);
     } else {
-        res.status(404).json({ message: 'User Not Found'});
+        res.status(404).json({ message: 'User Not Found' });
     }
 
 });
@@ -211,7 +212,7 @@ router.put('/profile', passport.authenticate('jwt', { session: false }), async (
     if (user) {
         user.name = req.body.name || user.name;
         user.email = req.body.email || user.email;
-        
+
         if (req.body.password) {
             user.password = bcrypt.hashSync(req.body.password, 10);
         }

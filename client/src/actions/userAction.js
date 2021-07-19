@@ -58,9 +58,10 @@ export const detailsUser = (userId) => async (dispatch, getState) => {
 
     try {
         //send ajax request 
+        console.log(userId)
         const { data } = await axios.get(`http://localhost:8000/api/user/${userId}`, {
             headers: {
-                Authorization: `Bearer ${userInfo?.token}`
+                Authorization: `${userInfo?.token}`
             }
         });
 
@@ -78,10 +79,12 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
     const { userSignin: { userInfo } } = getState();
 
     try {
+        const userInfo2 = localStorage.getItem('userInfo')
+        console.log(userInfo2)
         //send ajax request 
         const { data } = await axios.put('http://localhost:8000/api/user/profile', user, {
             headers: {
-                Authorization: `Bearer ${userInfo?.token}`
+                Authorization: `${userInfo?.token}`
             }
         });
 
@@ -89,7 +92,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
         //update userSignin as well to update the display
         dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });
         //update localStorage after profile updated
-        localStorage.setItem('userInfo', JSON.stringify(data));
+        localStorage.getItem('userInfo', JSON.stringify(data));
     } catch (error) {
         // if error, dispatch FAIL, set payload to error message 
         dispatch({ type: USER_UPDATE_PROFILE_FAIL, payload: error.response && error.response.data.message ? error.response.data.message : error.message });
