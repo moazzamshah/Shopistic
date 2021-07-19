@@ -82,7 +82,7 @@ const SignIn = (props) => {
                   className='text-muted'
                 />
                 <div className='reset'>
-                  <Link to='#'>
+                  <Link to='/resetpassword/:token'>
                     <small>Forgot Password?</small>
                   </Link>
                 </div>
