@@ -32,8 +32,8 @@ const NavBar = () => {
             <Nav.Link as={Link} to='/contact'>
               Contact
             </Nav.Link>
-            <Nav.Link as={Link} to='/pricing'>
-              Pricing
+            <Nav.Link as={Link} to='/about'>
+              About Us
             </Nav.Link>
           </Nav>
 
