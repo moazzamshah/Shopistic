@@ -60,33 +60,33 @@ function ProfileScreen() {
   //     dispatch(updateUserProfile({ userId: user._id, name, email, password }));
   //   }
   // };
-    //dispatch userDetail action when page load 
-    const dispatch = useDispatch();
-    useEffect(() => {
-        if(!user) {
-            //reset user profile update 
-            dispatch({type:USER_UPDATE_PROFILE_RESET});
-            //dispatch actions to get user details 
-            dispatch(detailsUser(userInfo.userId));
-            console.log(userInfo)
-        } else {
-            setName(user.name);
-            setEmail(user.email);
-        }
-    }, [dispatch, userInfo._id, user]);
+    //dispatch userDetail action when page load
+    // const dispatch = useDispatch();
+    // useEffect(() => {
+    //     if(!user) {
+    //         //reset user profile update
+    //         dispatch({type:USER_UPDATE_PROFILE_RESET});
+    //         //dispatch actions to get user details
+    //         dispatch(detailsUser(userInfo.userId));
+    //         console.log(userInfo)
+    //     } else {
+    //         setName(user.name);
+    //         setEmail(user.email);
+    //     }
+    // }, [dispatch, userInfo._id, user]);
 
-    //handler profile update 
-    const submitHandler = (e) => {
-        e.preventDefault();
-        //check whether passwords match
-        if(password !== confirmPassword) {
-            alert('Password and confirm password do not match');
-        } else {
-            //disptach update profile
-            dispatch(updateUserProfile({ userId: user._id, name, email, password }));
-            window.location.href = '/profile';
-        }
-    };
+    // //handler profile update
+    // const submitHandler = (e) => {
+    //     e.preventDefault();
+    //     //check whether passwords match
+    //     if(password !== confirmPassword) {
+    //         alert('Password and confirm password do not match');
+    //     } else {
+    //         //disptach update profile
+    //         dispatch(updateUserProfile({ userId: user._id, name, email, password }));
+    //         window.location.href = '/profile';
+    //     }
+    // };
 
 
   return (
