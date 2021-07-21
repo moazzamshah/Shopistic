@@ -10,7 +10,7 @@
 }
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: rgb(252, 252, 252);
+  background-color: #fafafa;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -29,3 +29,4 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+

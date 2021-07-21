@@ -25,10 +25,9 @@ function HomeScreen() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
   return (
     <Container id='header' className='col-10 mx-auto'>
-      <Row className='d-flex align-items-center justify-content-between mt-5 py-5 main__row'>
+      <Row className='d-flex align-items-center justify-content-between my-5 py-5 main__row'>
         <Col lg={6} md={6} sm={12} className='d-flex flex-column'>
           <h1>
             Grow your business with
@@ -52,11 +51,13 @@ function HomeScreen() {
         ) : error ? (
           <MessageBox variant='danger'> {error} </MessageBox>
         ) : (
-          <div className='row center'>
+          <Row className='my-4'>
             {products.map((product) => (
-              <Product key={product._id} product={product} />
+              <Col sm={12} md={6} lg={4} xl={3}>
+                <Product key={product._id} product={product} />
+              </Col>
             ))}
-          </div>
+          </Row>
         )}
       </div>
     </Container>

@@ -14,11 +14,11 @@ const NavBar = () => {
   };
   return (
     <>
-      <Navbar expand="lg" variant="light" className="my-navbar mx-auto col-10 ">
+      <Navbar expand='lg' variant='light' className='my-navbar mx-auto col-10 font-weight-bold'>
         {/* ================ BRAND ================ */}
 
-        <Navbar.Brand as={Link} className="text-info" to="/">
-          Shopistic{" "}
+        <Navbar.Brand as={Link} className='text-class font-weight-bold' to='/'>
+          <i class='fa fa-tags'></i> SHOPISTIC
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

@@ -31,12 +31,20 @@ const AboutScreen = () => {
             <div className='social-icons'>
               <ul className='d-flex'>
                 <li>
-                  <a href='https://github.com/Ahmad575-a/'>
+                  <a
+                    href='https://github.com/Ahmad575-a/'
+                    target='_blank'
+                    rel='noreferrer'
+                  >
                     <i className='fa fa-github text-info px-2'></i>
                   </a>
                 </li>
                 <li>
-                  <a href='https://www.linkedin.com/in/ahmad-alghetheth/'>
+                  <a
+                    href='https://www.linkedin.com/in/ahmad-alghetheth/'
+                    target='_blank'
+                    rel='noreferrer'
+                  >
                     <i className='fa fa-linkedin text-info'></i>
                   </a>
                 </li>
@@ -63,12 +71,20 @@ const AboutScreen = () => {
             <div className='social-icons'>
               <ul className='d-flex'>
                 <li>
-                  <a href='https://github.com/ArslanRama'>
+                  <a
+                    href='https://github.com/ArslanRama'
+                    target='_blank'
+                    rel='noreferrer'
+                  >
                     <i className='fa fa-github px-2 text-info'></i>
                   </a>
                 </li>
                 <li>
-                  <a href='https://www.linkedin.com/in/aslan-ramazan-arslan/'>
+                  <a
+                    href='https://www.linkedin.com/in/aslan-ramazan-arslan/'
+                    target='_blank'
+                    rel='noreferrer'
+                  >
                     <i className='fa fa-linkedin text-info'></i>
                   </a>
                 </li>
@@ -99,12 +115,20 @@ const AboutScreen = () => {
             <div className='social-icons'>
               <ul className='d-flex'>
                 <li>
-                  <a href='https://github.com/moazzamshah'>
+                  <a
+                    href='https://github.com/moazzamshah'
+                    target='_blank'
+                    rel='noreferrer'
+                  >
                     <i className='fa fa-github px-2 text-info'></i>
                   </a>
                 </li>
                 <li>
-                  <a href='https://www.linkedin.com/in/syed-moazzam-ali-shah-53b703a6/'>
+                  <a
+                    href='https://www.linkedin.com/in/syed-moazzam-ali-shah-53b703a6/'
+                    target='_blank'
+                    rel='noreferrer'
+                  >
                     <i className='fa fa-linkedin text-info'></i>
                   </a>
                 </li>

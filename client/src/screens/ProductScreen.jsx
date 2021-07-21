@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import LoadingBox from "../components/LoadingBox";
-import MessageBox from "../components/MessageBox";
-import Rating from "../components/Rating";
-import { detailsProduct } from "../actions/productActions";
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import LoadingBox from '../components/LoadingBox';
+import MessageBox from '../components/MessageBox';
+import Rating from '../components/Rating';
+import { detailsProduct } from '../actions/productActions';
 // import data from '../data/products';
+import { Row, Container, Col, Card, Button } from 'react-bootstrap';
 
 function ProductScreen(props) {
   // console.log(props);
@@ -35,101 +36,106 @@ function ProductScreen(props) {
   };
 
   return (
-    <div>
-      {loading ? (
-        <LoadingBox />
-      ) : error ? (
-        <MessageBox variant="danger"> {error} </MessageBox>
-      ) : (
-        <div>
-          {/* back to result link  */}
-          <Link to="/"> Back To Result</Link>
+    <>
+      <Row className='col-10 mx-auto mt-5'>
+        {loading ? (
+          <LoadingBox />
+        ) : error ? (
+          <MessageBox variant='danger'> {error} </MessageBox>
+        ) : (
+          <Col lg={6} xl={4} sm={12} xs={12}>
+            {/* back to result link*/}
+            <Link className='btn btn-info my-3' to='/'>
+              {' '}
+              <i class='fa fa-arrow-left'></i> Go back
+            </Link>
+            <Card className='shadow p-3'>
+              {/* product image */}
 
-          <div >
-            {/* product image */}
-            <div >
-              <img src={product.picture} alt={product.name} />
-            </div>
+              <Card.Img src={product.picture} alt={product.name} />
 
-            {/* description */}
-            <div >
-              <ul>
-                <li>
-                  <h1>{product.title}</h1>
-                </li>
-                <li>
-                  <Rating
-                    rating={product.rating}
-                    numReviews={product.numReviews}
-                  />
-                </li>
-                <li>Price: ${product.price}</li>
-                <li>
-                  Description:
-                  <p>{product.description} </p>
-                </li>
-              </ul>
-            </div>
-
-            {/* action */}
-            <div >
-              <div >
+              {/* description */}
+              <div>
                 <ul>
                   <li>
-                    <div>
-                      <div>Price </div>
-                      <div >${product.price}</div>
-                    </div>
+                    <Card.Title className='text-capitalize'>
+                      <b>{product.title}</b>
+                    </Card.Title>
                   </li>
                   <li>
-                    <div >
-                      <div>Status </div>
-                      <div>
-                        {product.countInStock > 0 ? (
-                          <span > In Stock</span>
-                        ) : (
-                          <span variant="danger"> Unavailable</span>
-                        )}
-                      </div>
-                    </div>
+                    <Rating
+                      rating={product.rating}
+                      numReviews={product.numReviews}
+                    />
                   </li>
-                  {/* Check product quantity first */}
-                  {product.countInStock > 0 && (
-                    <>
-                      <li>
-                        <div >
-                          <div>Qty</div>
-                          <div>
-                            <select
-                              value={qty}
-                              onChange={(e) => setQty(e.target.value)}
-                            >
-                              {[...Array(product.countInStock)].map((x, i) => (
-                                <option key={i + 1} value={i + 1}>
-                                  {i + 1}
-                                </option>
-                              ))}
-                            </select>
-                          </div>
-                        </div>
-                      </li>
-                      <li>
-                        <button
-                      
-                          onClick={addToCartHandler}
-                        >
-                          Add to Cart
-                        </button>
-                      </li>
-                    </>
-                  )}
+                  <li>
+                    {' '}
+                    <b>Price:</b> ${product.price}
+                  </li>
+                  <li>
+                    <b>Description:</b>
+
+                    <Card.Text>{product.description} </Card.Text>
+                  </li>
                 </ul>
               </div>
-            </div>
-          </div>
-        </div>
-      )}
-    </div>
+
+              {/* action */}
+              <div>
+                <div>
+                  <ul>
+                    <li>
+                      <div>
+                        <div>
+                          <b>Status</b>
+                        </div>
+                        <div>
+                          {product.countInStock > 0 ? (
+                            <span> In Stock</span>
+                          ) : (
+                            <span variant='danger'> Unavailable</span>
+                          )}
+                        </div>
+                      </div>
+                    </li>
+                    {/* Check product quantity first */}
+                    {product.countInStock > 0 && (
+                      <>
+                        <li>
+                          <div>
+                            <div>Qty</div>
+                            <div>
+                              <select
+                                className='my-3'
+                                value={qty}
+                                onChange={(e) => setQty(e.target.value)}
+                              >
+                                {[...Array(product.countInStock)].map(
+                                  (x, i) => (
+                                    <option key={i + 1} value={i + 1}>
+                                      {i + 1}
+                                    </option>
+                                  )
+                                )}
+                              </select>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <Button variant='dark' onClick={addToCartHandler}>
+                            Add to Cart
+                          </Button>
+                        </li>
+                      </>
+                    )}
+                  </ul>
+                </div>
+              </div>
+            </Card>
+          </Col>
+        )}
+      </Row>
+    </>
   );
 }
 

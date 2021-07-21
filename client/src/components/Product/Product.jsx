@@ -1,27 +1,49 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Rating from "../Rating";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
+import Rating from '../Rating';
+import { detailsProduct } from '../../actions/productActions';
+import { Card } from 'react-bootstrap';
 
 function Product(props) {
   let { product } = props;
   console.log(product)
 
-  return (
-    <div className="card">
-      <Link to={`/product/${product._id}`}>
-        <img className="medium" src={product.picture} alt="product" />
-      </Link>
-      <div className="card-body">
+
+    // const dispatch = useDispatch()
+    /* product = dispatch(detailsProduct()) */
+
+    // const productDetails = useSelector(state => state.productDetails);
+    /* product = productDetails.product */
+    /* console.log(productDetails, "product details")
+
+
+    const test = (productID) =>{
+        dispatch(detailsProduct(productID));
+        // useHistory.push(`/${product._id}`)
+    } */
+
+
+    return (
+      <Card className='my-3 p-3 rounded shadow'>
         <Link to={`/product/${product._id}`}>
-          <h2>{product.title}</h2>
+          <Card.Img src={product.picture} alt='product' />
         </Link>
-        <div>{product.description}</div>
-        {/* Rating component */}
-        <Rating rating={product.rating} numReviews={product.numReviews} />
-        <div className="price">${product.price}</div>
-      </div>
-    </div>
-  );
+
+
+        <Card.Body>
+          <Link to={`/product/${product._id}`}>
+            <Card.Title>{product.title}</Card.Title>
+          </Link>
+          <Card.Text>{product.description}</Card.Text>
+          {/* Rating component */}
+          <Rating rating={product.rating} numReviews={product.numReviews} />
+          <Card.Title className='price'>${product.price}</Card.Title>
+        </Card.Body>
+
+        {/* <button type="submit" onClick={()=> test(product._id)} >product info</button> */}
+      </Card>
+    );
 }
 
 export default Product;
