@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
 router.post('/create',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
-        const { title, description, price, picture, category } = req.body
+        const { title, description, price, picture, category, countInStock} = req.body
         if (!title || !price) {
             return res.status(422).json({ error: "please add all the required fields" })
         }
@@ -29,7 +29,8 @@ router.post('/create',
             description,
             price,
             picture,
-            category
+            category,
+            countInStock
         });
 
         newItem
