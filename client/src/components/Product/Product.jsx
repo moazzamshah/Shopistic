@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import Rating from '../Rating';
 import { detailsProduct } from '../../actions/productActions';
+import { Card } from 'react-bootstrap';
 
 function Product (props) {
     let { product} = props;
@@ -10,11 +11,11 @@ function Product (props) {
 
     // const dispatch = useDispatch()
     /* product = dispatch(detailsProduct()) */
-    
+
     // const productDetails = useSelector(state => state.productDetails);
     /* product = productDetails.product */
     /* console.log(productDetails, "product details")
-   
+
 
     const test = (productID) =>{
         dispatch(detailsProduct(productID));
@@ -23,23 +24,24 @@ function Product (props) {
 
 
     return (
-        <div className='card'>
-            <Link to={`/product/${product._id}`}>
-                <img className='medium' src={product.image} alt='product' />
-            </Link>
-            <div className='card-body'>
-                <Link to={`/product/${product._id}`}>
-                    <h2>{product.title}</h2>
-                </Link>
-                <div>
-                    {product.description}
-                </div>
-                {/* Rating component */}
-                <Rating rating={product.rating} numReviews={product.numReviews} />
-                <div className='price'>${product.price}</div>
-            </div>
-            {/* <button type="submit" onClick={()=> test(product._id)} >product info</button> */}
-        </div>
+      <Card className='my-3 p-3 rounded shadow'>
+        <Link to={`/product/${product._id}`}>
+          <Card.Img src={product.picture} alt='product' />
+        </Link>
+
+
+        <Card.Body>
+          <Link to={`/product/${product._id}`}>
+            <Card.Title>{product.title}</Card.Title>
+          </Link>
+          <Card.Text>{product.description}</Card.Text>
+          {/* Rating component */}
+          <Rating rating={product.rating} numReviews={product.numReviews} />
+          <Card.Title className='price'>${product.price}</Card.Title>
+        </Card.Body>
+
+        {/* <button type="submit" onClick={()=> test(product._id)} >product info</button> */}
+      </Card>
     );
 }
 
