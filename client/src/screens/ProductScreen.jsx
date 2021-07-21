@@ -45,14 +45,14 @@ function ProductScreen(props) {
           {/* back to result link  */}
           <Link to="/"> Back To Result</Link>
 
-          <div className="row top">
+          <div >
             {/* product image */}
-            <div className="col-2">
-              <img className="large" src={product.image} alt={product.name} />
+            <div >
+              <img src={product.picture} alt={product.name} />
             </div>
 
             {/* description */}
-            <div className="col-1">
+            <div >
               <ul>
                 <li>
                   <h1>{product.title}</h1>
@@ -72,21 +72,21 @@ function ProductScreen(props) {
             </div>
 
             {/* action */}
-            <div className="col-1">
-              <div className="card car-body">
+            <div >
+              <div >
                 <ul>
                   <li>
-                    <div className="row">
+                    <div>
                       <div>Price </div>
-                      <div className="price">${product.price}</div>
+                      <div >${product.price}</div>
                     </div>
                   </li>
                   <li>
-                    <div className="row">
+                    <div >
                       <div>Status </div>
                       <div>
                         {product.countInStock > 0 ? (
-                          <span className="success"> In Stock</span>
+                          <span > In Stock</span>
                         ) : (
                           <span variant="danger"> Unavailable</span>
                         )}
@@ -97,7 +97,7 @@ function ProductScreen(props) {
                   {product.countInStock > 0 && (
                     <>
                       <li>
-                        <div className="row">
+                        <div >
                           <div>Qty</div>
                           <div>
                             <select
@@ -115,7 +115,7 @@ function ProductScreen(props) {
                       </li>
                       <li>
                         <button
-                          className="primary block"
+                      
                           onClick={addToCartHandler}
                         >
                           Add to Cart

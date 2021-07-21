@@ -26,6 +26,10 @@ const ItemSchema = new Schema({
         type: String,
         required: false
     },
+    countInStock:{
+        type: Number,
+        default: 0
+    },
     date: {
         type: Date,
         default: Date.now

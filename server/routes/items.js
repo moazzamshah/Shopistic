@@ -18,7 +18,8 @@ router.post(
   '/create',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    const { title, description, price, picture, category } = req.body;
+    const { title, description, price, picture, category, countInStock } =
+      req.body;
     if (!title || !price) {
       return res
         .status(422)
@@ -32,6 +33,7 @@ router.post(
       price,
       picture,
       category,
+      countInStock,
     });
 
     newItem
@@ -48,6 +50,14 @@ router.get('/:item_id', (req, res) => {
     .catch((err) =>
       res.status(404).json({ noItemsFound: 'No item found with that ID' })
     );
+});
+
+// get items of a specific user
+router.get('/mine/:userId', (req, res) => {
+  Item.find({ seller: req.params.userId }, (err, items) => {
+    if (err) throw err;
+    res.json(items);
+  });
 });
 
 // update the products
