@@ -35,5 +35,30 @@ router.get("/:id", (req, res) => {
         .catch(err => res.status(404).json({ errorMsg:err }));
 });
 
+// update a Review
+router.patch("/:id", passport.authenticate('jwt', { session: false }), (req, res) => {
+	Review.findOneAndUpdate({ _id: req.params.id },
+	  {
+		$set:
+		{
+			itemId: req.body.itemId,
+			title: req.body.title,
+			comment: req.body.comment,
+            rating: req.body.rating
+		}
+	}).then(review => {
+		res.json(review);
+	})
+});
+
+// Delete the review by the User
+router.delete("/:id", passport.authenticate('jwt', { session: false }), (req, res) => {
+    Review.findByIdAndRemove(req.params.id, err => {
+        if (err) res.send(err);
+        else res.json({
+            message: "the review has been deleted"
+        });
+    });
+});
 
 module.exports = router
