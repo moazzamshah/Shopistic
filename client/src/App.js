@@ -15,6 +15,8 @@ import ProfileScreen from './screens/ProfileScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen'
 import singleProduct from './components/Product/single_product'
 import Cart from './screens/CartScreen'
+import CreateReview from './components/Rating/CreateReview';
+import ProductScreen from './screens/ProductScreen'
 
 
 
@@ -33,8 +35,9 @@ const App = () => {
           <Route path='/forgot' component={ForgotPassword} />
           <Route path='/profile' component={ProfileScreen} />
           <Route path='/order' component={PlaceOrderScreen} />
-          <Route path='/product/:id' component={singleProduct} /> 
+          <Route path='/product/:id' component={ProductScreen} /> 
           <Route path='/cart' component={Cart} />
+          <Route path='/review/create' component={CreateReview} />
           <Route component={NoPageFound} />
         </Switch>
       </div>
