@@ -5,8 +5,9 @@ import Rating from '../Rating';
 import { detailsProduct } from '../../actions/productActions';
 import { Card } from 'react-bootstrap';
 
-function Product (props) {
-    let { product} = props;
+function Product(props) {
+  let { product } = props;
+  console.log(product)
 
 
     // const dispatch = useDispatch()

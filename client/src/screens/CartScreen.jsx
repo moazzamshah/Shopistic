@@ -41,8 +41,8 @@ function CartScreen(props) {
     };
     
     return (
-        <div className='top row'>
-            <div className="col-2">
+        <div>
+            <div>
                 <h1>Shopping Cart </h1>
                 {
                     cartItems.length === 0 ? (
@@ -54,11 +54,11 @@ function CartScreen(props) {
                             {
                                 cartItems.map(item => (
                                     <li key={item.product}>
-                                        <div className="row">
+                                        <div>
                                             <div>
-                                                <img src={item.image} alt={item.name} className='small'/>
+                                                <img src={item.image} alt={item.name} />
                                             </div>
-                                            <div className="min-30">
+                                            <div >
                                                 <Link to={`/product/${item.product}`}>
                                                     {item.name}
                                                 </Link>
@@ -91,8 +91,8 @@ function CartScreen(props) {
                     )
                 }
             </div>
-            <div className="col-1">
-                <div className="card card-body">
+            <div>
+                <div>
                     <ul>
                         <li>
                             <h2>
@@ -102,7 +102,6 @@ function CartScreen(props) {
                         </li>
                         <li>
                             <button type='button'
-                                className='primary block'
                                 onClick={checkoutHandler}
                                 disabled = {cartItems.length === 0}
                             >

@@ -55,11 +55,7 @@ const AboutScreen = () => {
             <h3> Ahmad Alghetheth </h3>
             <p className='my-3 text-muted'> Full Stack Web Developer </p>
             <p>
-              Full Stack web developer (MERN stack) with 1 year experience and
-              soon i will graduate ,i'm very passionate , Fast learner ,team
-              player and so excited and looking for new challenges and a
-              position ,where i can be helpful in Web Developing and looking
-              forward to collect more experience.
+            Full-stack Web Developer (MERN stack) with 1-year experience, very passionate, high level of Learnability Team oriented, so excited and looking for new challenges and a position, to be helpful in Web Developing and to gain more experience.
             </p>
           </div>
         </Col>

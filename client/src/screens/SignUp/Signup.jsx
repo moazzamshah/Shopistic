@@ -66,7 +66,7 @@ const Signup = (props) => {
                 />
               </Col>
               <Col>
-                <Form.Group controlId='formGroupEmail'>
+                <Form.Group>
                   <Form.Control
                     type='email'
                     id='email'
@@ -86,7 +86,7 @@ const Signup = (props) => {
                   id='password'
                   placeholder='Enter password'
                   value={password}
-                  required
+                  required={true}
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </Col>
@@ -111,13 +111,7 @@ const Signup = (props) => {
               />
             </Form.Group>
 
-            <Button
-              as={Link}
-              to='#'
-              type='submit'
-              variant='info'
-              className='my-2'
-            >
+            <Button type='submit' variant='info' className='my-2'>
               Sign up
             </Button>
           </Form>
