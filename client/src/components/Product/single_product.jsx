@@ -11,24 +11,12 @@ function SingleProduct(props) {
       setProduct(res.data);
     });
   }, []);
-  /* const dispatch = useDispatch();
-  console.log(props, "props");
-  const {id} = useParams();
-  useEffect(() => {
-    dispatch(detailsProduct(id))
-    
-  }, [dispatch]);
-
   
-
-  const productDetails = useSelector((state) => state.productDetails);
-  console.log(productDetails.product, "product details"); */
-
   return (
     <div className="card">
       <h1>Title: {product.title}</h1>
       <div></div>
-      <img className="medium" src={product.image} alt="product" />
+      <img className="medium" src={product.picture} alt="product" />
       <div className="card-body">
         <div>Category: {product.category}</div>
         <div>Description: {product.description}</div>
