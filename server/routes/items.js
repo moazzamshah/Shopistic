@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
 router.post('/create',
     passport.authenticate('jwt', { session: false }),
     (req, res) => {
-        const { title, description, price, picture, category, countInStock} = req.body
+        const { title, description, price, picture, category, countInStock } = req.body
         if (!title || !price) {
             return res.status(422).json({ error: "please add all the required fields" })
         }
@@ -48,6 +48,14 @@ router.get("/:item_id", (req, res) => {
             res.status(404).json({ noItemsFound: "No item found with that ID" })
         );
 });
+
+// get items of a specific user
+router.get('/mine/:userId', (req, res) => {
+    Item.find({ seller: req.params.userId }, (err, items) => {
+        if (err) throw err;
+        res.json(items)
+    })
+})
 
 // update the products
 router.patch("/:id", (req, res) => {
