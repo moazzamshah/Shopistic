@@ -15,10 +15,11 @@ import ProfileScreen from './screens/ProfileScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen'
 // import singleProduct from './components/Product/single_product'
 import Cart from './screens/CartScreen'
-// import CreateReview from './components/Rating/CreateReview';
+import CreateReview from './components/Rating/CreateReview';
 import ProductScreen from './screens/ProductScreen'
 import CreateProduct from './components/Product/CreateProduct';
-// import MyProducts from './components/Product/MyProducts';
+import MyProducts from './components/Product/MyProducts';
+import Profile from './screens/Profile';
 
 
 
@@ -35,13 +36,14 @@ const App = () => {
           <Route path='/contact' component={Contact} />
           <Route path='/resetpassword/:token' component={ResetPassword} />
           <Route path='/forgot' component={ForgotPassword} />
-          <Route path='/profile' component={ProfileScreen} />
+          <Route path='/profile' component={Profile} />
+          <Route path='/accountSetting' component={ProfileScreen} />
           <Route path='/order' component={PlaceOrderScreen} />
           <Route path='/product/:id' component={ProductScreen} />
           <Route path='/createProduct' component={CreateProduct} />
-          {/* <Route path='/myproducts' component={MyProducts} /> */}
+          <Route path='/myproducts' component={MyProducts} />
           <Route path='/cart' component={Cart} />
-          {/* <Route path='/review/create' component={CreateReview} /> */}
+          <Route path='/review/create/:id' component={CreateReview} />
           <Route component={NoPageFound} />
         </Switch>
       </div>
