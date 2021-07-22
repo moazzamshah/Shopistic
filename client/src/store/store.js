@@ -2,15 +2,16 @@ import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { ProductDetailsReducer, productListReducer } from '../reducers/productReducer';
 import { cartReducer } from '../reducers/cartReducer';
-import { userDetailsReducer, userRegisterReducer, userSigninReducer, userUpdateProfileReducer, resetUserReducer} from '../reducers/userReducer';
+import { userDetailsReducer, userRegisterReducer, userSigninReducer, userUpdateProfileReducer, resetUserReducer } from '../reducers/userReducer';
 import { orderCreateReducer, orderDetailsReducer, orderMineListReducer, orderPayReducer } from '../reducers/orderReducer';
+import { reviewsReducer } from '../reducers/reviewReducer'
 
 
 const initialState = {
     //set userInfo to what stored in localStorage
     userSignin: {
-        userInfo: localStorage.getItem('userInfo') 
-            ? JSON.parse(localStorage.getItem('userInfo')) 
+        userInfo: localStorage.getItem('userInfo')
+            ? JSON.parse(localStorage.getItem('userInfo'))
             : null
     },
     // set cart initial value to localStorage if exists 
@@ -29,7 +30,7 @@ const initialState = {
 const reducer = combineReducers({
     productList: productListReducer,
     productDetails: ProductDetailsReducer,
-    cart:cartReducer,
+    cart: cartReducer,
     userSignin: userSigninReducer,
     userRegister: userRegisterReducer,
     orderCreate: orderCreateReducer,
@@ -38,7 +39,8 @@ const reducer = combineReducers({
     orderMineList: orderMineListReducer,
     userDetails: userDetailsReducer,
     userUpdateProfile: userUpdateProfileReducer,
-    resetUser: resetUserReducer
+    resetUser: resetUserReducer,
+    reviewsReducer
 });
 
 //https://extension.remotedev.io/#usage
@@ -48,8 +50,8 @@ const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 
 const store = createStore(
-    reducer, 
-    initialState, 
+    reducer,
+    initialState,
     composeEnhancer(applyMiddleware(thunk))
 );
 
