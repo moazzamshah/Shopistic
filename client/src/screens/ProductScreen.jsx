@@ -126,6 +126,7 @@ function ProductScreen(props) {
                             Add to Cart
                           </Button>
                         </li>
+                        <a href={`/review/create/${product._id}`}>review</a>
                       </>
                     )}
                   </ul>
