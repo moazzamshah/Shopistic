@@ -8,6 +8,7 @@ const passRoute = require('./routes/fbRoute')
 const contactRoute = require('./routes/contactRoute');
 const reviewRoute = require('./routes/review')
 const orderRpute = require('./routes/order')
+const adminRoute = require('./routes/admin');
 
 
 // client connection
@@ -49,6 +50,7 @@ app.use('/api/review' , reviewRoute)
 app.use('/api/orders' , orderRpute)
 app.use('/passport', passRoute); //passport js facebook route
 app.use('/contact', contactRoute); //route for contact us page
+app.use('/admin', adminRoute);
 
 
 //! listen app with port

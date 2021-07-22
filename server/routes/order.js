@@ -6,12 +6,12 @@ const passport = require('passport')
 // find my orders
 router.get('/mine', passport.authenticate('jwt', { session: false }), async (req, res) => {
     const orders = await Order.find({ user: req.user._id }).populate({path : "orderItems", populate : { path: "product"} })
-    
-    // console.log('orders:', orders);    
+
+    // console.log('orders:', orders);
     res.json(orders);
 });
 
-// create a new order  
+// create a new order
 router.post('/', passport.authenticate('jwt', { session: false }), async (req, res) => {
     if (req.body.orderItems.length === 0) {
         return res.status(400).json({ message: 'Cart is empty' });
