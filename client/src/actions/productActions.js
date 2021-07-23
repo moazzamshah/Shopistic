@@ -51,12 +51,17 @@ export const createItem = (data) => (dispatch, getState) => {
         .then((item) => dispatch(receiveItem(item.data)))
 };
 
-export const editItem = (item, id) => dispatch => (
-    axios.patch(`http://localhost:8000/items/${id}`, item)
+export const editItem = (item, id) => (dispatch, getState) => (
+    axios.patch(`http://localhost:8000/api/items/${id}`, item)
         .then(item => dispatch(receiveItem(item.data)))
 )
 
-export const removeItem = (id) => dispatch => (
-    axios.delete(`http://localhost:8000/items/${id}`)
+export const removeItem = (id) => (dispatch, getState) => {
+    const { userSignin: { userInfo } } = getState();
+    axios.delete(`http://localhost:8000/api/items/${id}`, {
+        headers: {
+            Authorization: `${userInfo?.token}`
+        }
+    })
         .then((item) => dispatch({ type: REMOVE_PRODUCT, itemId: item.id }))
-);
+};
