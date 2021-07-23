@@ -20,6 +20,7 @@ import ProductScreen from './screens/ProductScreen'
 import CreateProduct from './components/Product/CreateProduct';
 import MyProducts from './components/Product/MyProducts';
 import Profile from './screens/Profile';
+import EditProduct from './components/Product/EditProduct';
 
 
 
@@ -42,6 +43,7 @@ const App = () => {
           <Route path='/product/:id' component={ProductScreen} />
           <Route path='/createProduct' component={CreateProduct} />
           <Route path='/myproducts' component={MyProducts} />
+          <Route path='/edit/:id' component={EditProduct} />
           <Route path='/cart' component={Cart} />
           <Route path='/review/create/:id' component={CreateReview} />
           <Route component={NoPageFound} />
