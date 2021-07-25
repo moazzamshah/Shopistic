@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Row, Card, Col, Container } from 'react-bootstrap';
+import { Row, Card, Col } from 'react-bootstrap';
 
 function SingleProduct(props) {
   const [product, setProduct] = useState({});

@@ -13,7 +13,6 @@ const MyProducts = () => {
       .get("http://localhost:8000/api/items/mine/" + userInfo.userId)
       .then((res) => {
         setMyProducts(res.data);
-        console.log(res.data);
       });
   }, []);
 
