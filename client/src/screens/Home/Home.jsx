@@ -47,7 +47,7 @@ function HomeScreen() {
               </Link>
             </div>
           ) : (
-            <h2> Welcome {userInfo.name.split(' ').[0]} 👋 </h2>
+            <h2> Welcome {userInfo.name} 👋 </h2>
           )}
           {/* <div className='mt-3'>
             <Link to='/signin' className='btn-get-started'>

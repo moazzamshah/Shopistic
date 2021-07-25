@@ -77,6 +77,8 @@ const CreateProduct = () => {
                 </Form.Group>
               </Col>
             </Row>
+
+
             <Form.Group>
               <Form.Label> Count in stock </Form.Label>
               <Form.Control
