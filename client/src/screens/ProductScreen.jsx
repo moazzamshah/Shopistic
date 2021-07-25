@@ -6,7 +6,14 @@ import MessageBox from '../components/MessageBox';
 import Rating from '../components/Rating';
 import { detailsProduct } from '../actions/productActions';
 // import data from '../data/products';
-import { Row, Container, Col, Card, Button, ButtonToolbar } from 'react-bootstrap';
+import {
+  Row,
+  Container,
+  Col,
+  Card,
+  Button,
+  ButtonToolbar,
+} from 'react-bootstrap';
 
 function ProductScreen(props) {
   // console.log(props);
@@ -37,70 +44,66 @@ function ProductScreen(props) {
 
   return (
     <>
-      <Row className='col-10 mx-auto mt-5'>
+      <div className='col-10 mx-auto mt-5'>
         {loading ? (
           <LoadingBox />
         ) : error ? (
           <MessageBox variant='danger'> {error} </MessageBox>
         ) : (
-          <Col lg={6} xl={4} sm={12} xs={12}>
-            {/* back to result link*/}
+          <div>
             <Button as={Link} variant='dark' className='my-3' to='/'>
               <i class='fa fa-arrow-left'> </i> Go back
             </Button>
-            <Card className='shadow p-3'>
-              {/* product image */}
 
-              <Card.Img src={product.picture} alt={product.name} />
+            <div className='mt-3'>
+              <Card className='p-3'>
+                {/* product image */}
+                <Row className='justify-content-between align-items-center'>
+                  <Col xl={5} lg={6} sm={12} md={6} className=''>
+                    <Card.Img src={product.picture} alt={product.name} />
+                  </Col>
 
-              {/* description */}
-              <div>
-                <ul>
-                  <li>
-                    <Card.Title className='text-capitalize'>
-                      <b>{product.title}</b>
-                    </Card.Title>
-                  </li>
-                  <li>
-                    <Rating
-                      rating={product.rating}
-                      numReviews={product.numReviews}
-                    />
-                  </li>
-                  <li>
-                    {' '}
-                    <b>Price:</b> ${product.price}
-                  </li>
-                  <li>
-                    <b>Description:</b>
-
-                    <Card.Text>{product.description} </Card.Text>
-                  </li>
-                </ul>
-              </div>
-
-              {/* action */}
-              <div>
-                <div>
-                  <ul>
-                    <li>
-                      <div>
-                        <div>
-                          <b>Status</b>
-                        </div>
-                        <div>
-                          {product.countInStock > 0 ? (
-                            <span> In Stock</span>
-                          ) : (
-                            <span variant='danger'> Unavailable</span>
-                          )}
-                        </div>
-                      </div>
-                    </li>
-                    {/* Check product quantity first */}
-                    {product.countInStock > 0 && (
-                      <>
+                  <Col xl={6} lg={6} sm={12} md={6} className='border-left pl-5'>
+                    <div>
+                      <ul>
                         <li>
+                          <Card.Title className='text-capitalize'>
+                            <b>{product.title}</b>
+                          </Card.Title>
+                        </li>
+                        <li>
+                          <Rating
+                            rating={product.rating}
+                            numReviews={product.numReviews}
+                          />
+                        </li>
+                        <li>
+                          {' '}
+                          <b>Price:</b> ${product.price}
+                        </li>
+                        <li>
+                          <b>Description:</b>
+
+                          <Card.Text>{product.description} </Card.Text>
+                        </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <div>
+                        <b>Status</b>
+                      </div>
+
+                      <div>
+                        {product.countInStock > 0 ? (
+                          <span> In Stock</span>
+                        ) : (
+                          <span variant='danger'> Unavailable</span>
+                        )}
+                      </div>
+
+                      {/* Check product quantity first */}
+                      {product.countInStock > 0 && (
+                        <>
                           <div>
                             <div>Qty</div>
                             <div>
@@ -119,22 +122,28 @@ function ProductScreen(props) {
                               </select>
                             </div>
                           </div>
-                        </li>
-                        <li>
+
                           <Button variant='info' onClick={addToCartHandler}>
                             Add to Cart
                           </Button>
-                        </li>
-                        <a href={`/review/create/${product._id}`}>review</a>
-                      </>
-                    )}
-                  </ul>
-                </div>
-              </div>
-            </Card>
-          </Col>
+                          <div>
+                            <Link
+                              className='btn btn-warning mt-3'
+                              to={`/review/create/${product._id}`}
+                            >
+                              Review
+                            </Link>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </Col>
+                </Row>
+              </Card>
+            </div>
+          </div>
         )}
-      </Row>
+      </div>
     </>
   );
 }
