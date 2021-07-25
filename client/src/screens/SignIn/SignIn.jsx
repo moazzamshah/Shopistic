@@ -45,13 +45,13 @@ const SignIn = (props) => {
       <Container className='col-10 mx-auto'>
         <Row className=' d-flex justify-content-between pt-5 '>
           <Col lg={4} md={6} sm={12}>
-            <h2 className='my-4'> Sign in </h2>
+            <h2 className='my-4'> Sign In </h2>
             <Form onSubmit={submitHandler}>
               <div>
                 {loading && <LoadingBox />}
                 {error && <MessageBox variant='danger'>{error}</MessageBox>}
               </div>
-              <Form.Group className='mb-3' controlId='formBasicEmail'>
+              <Form.Group className='mb-3'>
                 <Form.Control
                   type='email'
                   id='email'
@@ -62,7 +62,7 @@ const SignIn = (props) => {
                 />
               </Form.Group>
 
-              <Form.Group className='mb-3' controlId='formBasicPassword'>
+              <Form.Group className='mb-3'>
                 <Form.Control
                   type='password'
                   id='password'
@@ -72,10 +72,7 @@ const SignIn = (props) => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </Form.Group>
-              <Form.Group
-                controlId='formBasicCheckbox'
-                className='d-flex justify-content-between'
-              >
+              <Form.Group className='d-flex justify-content-between'>
                 <Form.Check
                   type='checkbox'
                   label='Remember me'

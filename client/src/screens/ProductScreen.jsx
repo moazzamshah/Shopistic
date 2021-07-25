@@ -6,7 +6,7 @@ import MessageBox from '../components/MessageBox';
 import Rating from '../components/Rating';
 import { detailsProduct } from '../actions/productActions';
 // import data from '../data/products';
-import { Row, Container, Col, Card, Button } from 'react-bootstrap';
+import { Row, Container, Col, Card, Button, ButtonToolbar } from 'react-bootstrap';
 
 function ProductScreen(props) {
   // console.log(props);
@@ -45,10 +45,9 @@ function ProductScreen(props) {
         ) : (
           <Col lg={6} xl={4} sm={12} xs={12}>
             {/* back to result link*/}
-            <Link className='btn btn-info my-3' to='/'>
-              {' '}
-              <i class='fa fa-arrow-left'></i> Go back
-            </Link>
+            <Button as={Link} variant='dark' className='my-3' to='/'>
+              <i class='fa fa-arrow-left'> </i> Go back
+            </Button>
             <Card className='shadow p-3'>
               {/* product image */}
 
@@ -122,7 +121,7 @@ function ProductScreen(props) {
                           </div>
                         </li>
                         <li>
-                          <Button variant='dark' onClick={addToCartHandler}>
+                          <Button variant='info' onClick={addToCartHandler}>
                             Add to Cart
                           </Button>
                         </li>

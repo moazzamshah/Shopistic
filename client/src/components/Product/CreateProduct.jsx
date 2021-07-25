@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Col, Form, Row, Button, } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux'
 import { createItem } from '../../actions/productActions'
 
@@ -10,10 +11,9 @@ const CreateProduct = () => {
   const [picture, setPicture] = useState("");
   const [category, setCategory] = useState("")
   const [countInStock, setCountInStock] = useState(0)
- 
+
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
-  console.log(userInfo, "this is the user info")
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
@@ -22,93 +22,78 @@ const CreateProduct = () => {
       window.location.href = "/";
   };
   return (
-    <div>
-      <div>
-        <h1> create your new product</h1>
-        <div>
-          <form
-            onSubmit={submitHandler}
-          >
-            <div >
-              <label>Product Title </label>
-              <input
-                type="text"
-                value={title}
-                onChange={e =>setTitle(e.target.value)}
-                
-              />
-            </div>
-            <div>
-              <label>Price: €</label>
-              
-              <input
-                type="number"
-                value={price}
-                onChange={e =>setPrice(e.target.value)}
-              />
-            </div>
-            <div>
-              <label>Description</label>
-              <textarea
-                value={description}
-                onChange={e =>setDescription(e.target.value)}
-              />
-            </div>
-            <div>
-              <label>picture </label>
-              <input
-                type="text"
-                value={picture}
-                onChange={e =>setPicture(e.target.value)}
-              />
-            </div>
-            <label>Count in stock: </label>
-            <input
-                type="number"
+    <>
+      <Row>
+        <Col xl={10}>
+          <Form onSubmit={submitHandler}>
+          <hr />
+            <h2 className='font-weight-bold my-4'> Add your product </h2>
+            <Row>
+              <Col>
+                <Form.Group>
+                  <Form.Label>Product Title </Form.Label>
+                  <Form.Control
+                    type='text'
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group>
+                  <Form.Label>Price: €</Form.Label>
+                  <Form.Control
+                    placeholder='€'
+                    type='number'
+                    value={price}
+                    onChange={(e) => setPrice(e.target.value)}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col>
+                <Form.Group>
+                  <Form.Label> Description </Form.Label>
+                  <Form.Control
+                    style={{ maxHeight: '100px', minHeight: '100px' }}
+                    as='textarea'
+                    rows='5'
+                    name='message'
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group>
+                  <Form.Label> Add Picture </Form.Label>
+                  <Form.Control
+                    type='text'
+                    value={picture}
+                    onChange={(e) => setPicture(e.target.value)}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Form.Group>
+              <Form.Label> Count in stock </Form.Label>
+              <Form.Control
+                type='number'
                 value={countInStock}
-                onChange={e =>setCountInStock(e.target.value)}
+                onChange={(e) => setCountInStock(e.target.value)}
               />
-            <div>
-              <label>Category </label>
-              <select
-                name="Category"
-                value={category}
-                onChange={e =>setCategory(e.target.value)}
-              >
-                <option value="clothing">
-                  Clothing
-                </option>
-                <option value="tech">
-                  Tech
-                </option>
-                <option value="sport">
-                  Sport
-                </option>
-                <option value="pets">
-                  Pets
-                </option>
-                <option value="food">
-                  Food
-                </option>
-                <option value="toys">
-                  Toys
-                </option>
-                <option value="accessories">
-                  Accessories
-                </option>
-              </select>
-            </div>
-            <div>
-              <input
-                type="submit"
-                value="Submit"
-              />
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  )
+            </Form.Group>
+
+            <Button type='submit' variant='info' className='my-2'>
+              Submit
+            </Button>
+          </Form>
+        </Col>
+      </Row>
+    </>
+  );
 }
 
 export default CreateProduct
