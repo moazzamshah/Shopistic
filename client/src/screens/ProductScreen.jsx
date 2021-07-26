@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-import Rating from '../components/Rating';
 import { detailsProduct } from '../actions/productActions';
 // import data from '../data/products';
 import {
@@ -70,12 +69,6 @@ function ProductScreen(props) {
                           <Card.Title className='text-capitalize'>
                             <b>{product.title}</b>
                           </Card.Title>
-                        </li>
-                        <li>
-                          <Rating
-                            rating={product.rating}
-                            numReviews={product.numReviews}
-                          />
                         </li>
                         <li>
                           {' '}

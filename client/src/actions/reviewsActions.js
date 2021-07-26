@@ -42,10 +42,16 @@ export const createReview = (data) => (dispatch, getState) => {
     .then((review) => dispatch({ type: CREATE_REVIEW, review }))
 };
 
-export const updateReview = (review, id) => dispatch => {
-  axios.patch(`http://localhost:8000/api/review/${id}`, review).then(review => dispatch(receiveReview(review)))
+export const updateReview = (review, id) => (dispatch, getState) => {
+  const { userSignin: { userInfo } } = getState()
+  axios.patch(`http://localhost:8000/api/review/${id}`, review, {
+    headers: {
+      Authorization: `${userInfo?.token}`
+    }
+  }).then(review => dispatch(receiveReview(review)))
 };
 
-export const deleteReview = (id) => dispatch => (
+export const deleteReview = (id) => (dispatch, getState) => {
+  const { userSignin: { userInfo } } = getState()
   axios.delete(`http://localhost:8000/api/review/${id}`).then((review) => dispatch({ type: REMOVE_REVIEW, reviewId: review.id }))
-);
+};
