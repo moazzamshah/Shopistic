@@ -74,6 +74,7 @@ router.post("/login", (req, res) => {
                     res.json({
                         success: true,
                         token: "Bearer " + token,
+                        name: user.name,
                         userId: user.id
                     });
                 });
@@ -98,7 +99,7 @@ router.post('/forgetpassword', async (req, res) => {
     };
     const token = jwt.sign(payload, process.env.JWT_RESET_SECRET);
     user.passwordResetToken = token;
-    user.passwordChangedAt = Date.now() + 60 * 1000 * 60 // expired after one hour 
+    user.passwordChangedAt = Date.now() + 60 * 1000 * 60 // expired after one hour
     await user.save();
     const resetUrl = `${req.protocol}://localhost:3000/resetPassword/${token}`;
     const resetMessage = `Forgot your password? Click on the link and submit your new password and password confirmation to ${resetUrl} \n \n if you did not reset your password. Kindly ignore this email`;
@@ -157,7 +158,7 @@ router.get('/resetPassword/:token', async (req, res) => {
 
 })
 
-// change the password in the database 
+// change the password in the database
 router.post('/resetPassword/password/:id', (req, res) => {
     const id = req.params.id
     User.findById(id, function (err, user) {
@@ -197,7 +198,7 @@ router.post('/resetPassword/password/:id', (req, res) => {
 router.get('/profile/:id', async (req, res) => {
     //get user info from User db
     const user = await User.findById(req.params.id);
-    //send user obj backto front end if there is user 
+    //send user obj backto front end if there is user
     if (user) {
         res.json(user);
     } else {

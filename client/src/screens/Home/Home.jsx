@@ -18,6 +18,10 @@ function HomeScreen() {
   const productList = useSelector((state) => state.productList);
   const { products, loading, error } = productList;
 
+  const userSignin = useSelector((state) => state.userSignin);
+    const { userInfo } = userSignin;
+
+
   //When page first load, fetch product data from backend
   useEffect(() => {
     // use dispatch to replace axios product fetch and set loading, error. Make sure to call listProducts function
@@ -35,11 +39,21 @@ function HomeScreen() {
               <strong> Shopistic </strong>
             </span>
           </h1>
-          <div className='mt-3'>
+
+          {!userInfo ? (
+            <div className='mt-3'>
+              <Link to='/signin' className='btn-get-started'>
+                Get Started 🚀
+              </Link>
+            </div>
+          ) : (
+            <h2> Welcome {userInfo.name} 👋 </h2>
+          )}
+          {/* <div className='mt-3'>
             <Link to='/signin' className='btn-get-started'>
               Get Started 🚀
             </Link>
-          </div>
+          </div> */}
         </Col>
         <Col lg={6} md={6} sm={12} className='header-img mt-5'>
           <img className='animated w-100' src={HomeImage} alt='img' />
@@ -53,7 +67,7 @@ function HomeScreen() {
         ) : (
           <Row className='my-4'>
             {products.map((product) => (
-              <Col sm={12} md={6} lg={4} xl={3}>
+              <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
                 <Product key={product._id} product={product} />
               </Col>
             ))}

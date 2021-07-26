@@ -11,16 +11,16 @@ export default function Footer() {
           <h3 className='ft-title'>About</h3>
           <ul>
             <li>
-              <Link as='#'>Services</Link>
+              <Link to='#'>Services</Link>
             </li>
             <li>
-              <Link as='/pricing'>Pricing</Link>
+              <Link to='#'>Pricing</Link>
             </li>
             <li>
-              <Link as='#'>Customers</Link>
+              <Link to='#'>Customers</Link>
             </li>
             <li>
-              <Link as='#'>Careers</Link>
+              <Link to='#'>Careers</Link>
             </li>
           </ul>
         </div>
@@ -29,16 +29,16 @@ export default function Footer() {
           <h3 className='ft-title'>Resources</h3>
           <ul>
             <li>
-              <Link as='#'>Docs</Link>
+              <Link to='#'>Docs</Link>
             </li>
             <li>
-              <Link as='#'>Blog</Link>
+              <Link to='#'>Blog</Link>
             </li>
             <li>
-              <Link as='#'>Shops</Link>
+              <Link to='#'>Shops</Link>
             </li>
             <li>
-              <Link as='#'>Webinars</Link>
+              <Link to='#'>Webinars</Link>
             </li>
           </ul>
         </div>
@@ -47,13 +47,13 @@ export default function Footer() {
           <h3 className='ft-title'>Contact</h3>
           <ul>
             <li>
-              <Link as='#'>Help</Link>
+              <Link to='#'>Help</Link>
             </li>
             <li>
-              <Link as='#'>Sales</Link>
+              <Link to='#'>Sales</Link>
             </li>
             <li>
-              <Link as='#'>Advertise</Link>
+              <Link to='#'>Advertise</Link>
             </li>
           </ul>
         </div>
@@ -75,27 +75,27 @@ export default function Footer() {
       <section className='ft-social '>
         <ul className='d-flex justify-content-center align-items-center'>
           <li>
-            <Link as='#'>
+            <Link to='#'>
               <i className='fa fa-facebook px-2'></i>
             </Link>
           </li>
           <li>
-            <Link as='#'>
+            <Link to='#'>
               <i className='fa fa-twitter px-2'></i>
             </Link>
           </li>
           <li>
-            <Link as='#'>
+            <Link to='#'>
               <i className='fa fa-instagram px-2'></i>
             </Link>
           </li>
           <li>
-            <Link as='#'>
+            <Link to='#'>
               <i className='fa fa-github px-2'></i>
             </Link>
           </li>
           <li>
-            <Link as='#'>
+            <Link to='#'>
               <i className='fa fa-linkedin px-2'></i>
             </Link>
           </li>
@@ -106,10 +106,10 @@ export default function Footer() {
       <section className='ft-legal'>
         <ul className='col-11 mx-auto d-flex justify-content-between align-items-center'>
           <li>
-            <Link as='#'>Terms &amp; Conditions</Link>
+            <Link to='#'>Terms &amp; Conditions</Link>
           </li>
           <li>
-            <Link as='#'>
+            <Link to='#'>
               Privacy Policy
             </Link>
           </li>
