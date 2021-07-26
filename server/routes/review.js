@@ -30,6 +30,7 @@ router.get("/", (req, res) => {
 // get the Reviews for a single product
 router.get("/:id", (req, res) => {
     Review.find({ itemId: req.params.id })
+    .populate('userId', '_id name')
         .sort({ date: -1 })
         .then(reviews => res.json(reviews))
         .catch(err => res.status(404).json({ errorMsg:err }));
