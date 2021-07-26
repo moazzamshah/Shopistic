@@ -42,15 +42,15 @@ const SignIn = (props) => {
 
   return (
     <>
+      <div>
+        {loading && <LoadingBox />}
+        {error && <MessageBox variant='danger'>{error}</MessageBox>}
+      </div>
       <Container className='col-10 mx-auto'>
         <Row className=' d-flex justify-content-between pt-5 '>
           <Col lg={4} md={6} sm={12}>
             <h2 className='my-4'> Sign In </h2>
             <Form onSubmit={submitHandler}>
-              <div>
-                {loading && <LoadingBox />}
-                {error && <MessageBox variant='danger'>{error}</MessageBox>}
-              </div>
               <Form.Group className='mb-3'>
                 <Form.Control
                   type='email'

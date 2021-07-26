@@ -46,16 +46,16 @@ const Signup = (props) => {
 
   return (
     <div className='col-10 mx-auto mt-5'>
+      <div>
+        {loading && <LoadingBox />}
+        {error && <MessageBox variant='danger'>{error}</MessageBox>}
+      </div>
       <Row className=' d-flex justify-content-between pt-5'>
         <Col lg={6} md={6} sm={12}>
           <h2 className='my-4'> Sign up </h2>
           <p className='my-3'> Please fill this form to create an account! </p>
           <Form onSubmit={submitHandler}>
             <Row>
-              <div>
-                {loading && <LoadingBox />}
-                {error && <MessageBox variant='danger'>{error}</MessageBox>}
-              </div>
               <Col>
                 <Form.Control
                   type='text'
