@@ -43,6 +43,7 @@ function ProfileScreen() {
       setName(user.name);
       setEmail(user.email);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, userInfo._id, user]);
 
   //handler profile update
