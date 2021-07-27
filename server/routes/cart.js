@@ -5,9 +5,11 @@ const CartItem = require('../models/Cart_Item')
 
 // Add the products to the cart
 router.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
+    // console.log(req.body, "req.body")
     const newCartItem = new CartItem({
-        userId: req.body.userId,
-        itemId: req.body.itemId
+        userId: req.body.productId.userId,
+        itemId: req.body.productId.itemId,
+        qty: req.body.productId.qty
     });
 
     newCartItem
@@ -18,6 +20,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
 
 // get the saved products in the cart
 router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
+    console.log(req.body, "req.body")
     CartItem.find({ userId: req.user.id })
         .populate("itemId")
         .then(cartItems => res.json(cartItems))

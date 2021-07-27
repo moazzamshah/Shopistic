@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { addToCart, removeFromCart } from "../actions/cartActions";
+import { fetchCartItems, removeFromCart } from "../actions/cartActions";
 import MessageBox from "../components/MessageBox";
 
 function CartScreen(props) {
@@ -10,9 +10,11 @@ function CartScreen(props) {
   const { userInfo } = userSignin;
   if (!userInfo) {
     props.history.push("/signin");
+  }else{
+    
   }
 
-  const productId = props.match.params.id;
+  // const productId = props.match.params.id;
   ///cart/${productId}?qty={qty}
   const qty = props.location.search
     ? Number(props.location.search.split("=")[1])
@@ -21,13 +23,14 @@ function CartScreen(props) {
   //get cart and cartItem from redux store using useSelector
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
-
+  console.log(cartItems, "cart items")
+  const userId = userInfo.userId
   // on page load, check if productId, if so, dispatch addToCart action
   useEffect(() => {
-    if (productId) {
-      dispatch(addToCart(productId, qty));
+    if (userInfo) {
+      dispatch(fetchCartItems({userId}));
     }
-  }, [dispatch, productId, qty]);
+  }, [dispatch, userId]);
 
   //delete cartItem action
   const removeFromCartHandler = (id) => {
@@ -61,11 +64,11 @@ function CartScreen(props) {
                   <div>
                     <select
                       value={item.qty}
-                      onChange={(e) =>
+                      /* onChange={(e) =>
                         dispatch(
                           addToCart(item.product, Number(e.target.value))
                         )
-                      }
+                      } */
                     >
                       {[...Array(item.countInStock).keys()].map((x) => (
                         <option key={x + 1} value={x + 1}>
