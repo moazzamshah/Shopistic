@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { detailsProduct } from '../actions/productActions';
+import { addToCart } from '../actions/cartActions'
 // import data from '../data/products';
 import {
   Row,
@@ -36,9 +37,13 @@ function ProductScreen(props) {
     dispatch(detailsProduct(productId));
   }, [dispatch, productId]);
 
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
+  // console.log(userInfo)
   // direct to cart page when add to cart btn is clicked
   const addToCartHandler = () => {
-    props.history.push(`/cart/${productId}?qty=${qty}`);
+    dispatch(addToCart({productId, userId:userInfo.userId, qty}))
+    props.history.push(`/cart`);
   };
 
   return (
