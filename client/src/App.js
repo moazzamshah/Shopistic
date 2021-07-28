@@ -21,6 +21,7 @@ import CreateProduct from './components/Product/CreateProduct';
 import MyProducts from './components/Product/MyProducts';
 import Profile from './screens/Profile';
 import EditProduct from './components/Product/EditProduct';
+import ShippingAddressScreen from './screens/ShippingAddressScreen';
 
 
 
@@ -39,7 +40,7 @@ const App = () => {
           <Route path='/forgot' component={ForgotPassword} />
           <Route path='/profile' component={Profile} />
           <Route path='/accountSetting' component={ProfileScreen} />
-          <Route path='/order' component={PlaceOrderScreen} />
+          <Route path='/order' component={ShippingAddressScreen} />
           <Route path='/product/:id' component={ProductScreen} />
           <Route path='/createProduct' component={CreateProduct} />
           <Route path='/myproducts' component={MyProducts} />
