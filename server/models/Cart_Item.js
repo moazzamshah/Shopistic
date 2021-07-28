@@ -10,6 +10,9 @@ const CartItemSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'items'
 	},
+	qty: {
+		type:Number
+	},
 	date: {
 		type: Date,
 		default: Date.now

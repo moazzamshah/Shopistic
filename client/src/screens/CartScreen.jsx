@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Card,
@@ -8,44 +9,57 @@ import {
   ListGroup,
   Row,
 } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { addToCart, removeFromCart } from '../actions/cartActions';
-import MessageBox from '../components/MessageBox';
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { fetchCartItems, removeFromCart } from "../actions/cartActions";
+import MessageBox from "../components/MessageBox";
 
 function CartScreen(props) {
   // check if user has already signed in, if not, redirect user to signin
+  const [cartItems, setCartItems] = useState([])
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
   if (!userInfo) {
     props.history.push('/signin');
   }
 
-  const productId = props.match.params.id;
+  useEffect(() => {
+    axios.get('http://localhost:8000/api/cart/getItems/'+ userInfo.userId)
+    .then(res=> {
+      setCartItems(res.data)
+      console.log(res.data)
+    })
+  }, [])
+
+  // const productId = props.match.params.id;
   ///cart/${productId}?qty={qty}
   const qty = props.location.search
     ? Number(props.location.search.split('=')[1])
     : 1;
   const dispatch = useDispatch();
   //get cart and cartItem from redux store using useSelector
-  const cart = useSelector((state) => state.cart);
+  /* const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
-
+  console.log(cartItems, "cart items")
   // on page load, check if productId, if so, dispatch addToCart action
   useEffect(() => {
-    if (productId) {
-      dispatch(addToCart(productId, qty));
+    if (userInfo) {
+      dispatch(fetchCartItems(userInfo.userId));
     }
-  }, [dispatch, productId, qty]);
+  }, [dispatch]); */
 
   //delete cartItem action
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id));
+    window.location.href = '/cart'
   };
 
   //After checkout btn is clicked, go to signin page and then shipping page
-  const checkoutHandler = () => {
-    props.history.push('/signin?redirect=shipping');
+
+  const checkoutHandler = (id) => {
+    // props.history.push("/signin?redirect=shipping");
+    window.location.href = '/order/'
   };
 
   return (
@@ -59,24 +73,22 @@ function CartScreen(props) {
             </MessageBox>
           ) : (
             <ListGroup>
-              {cartItems.map((item) => (
-                <ListGroup.Item key={item.product}>
+              {cartItems.map((item, index) => (
+                <ListGroup.Item key={index}>
                   <Row>
                     <Col md={2}>
-                      <Image src={item.image} alt={item.name} fluid rounded />
+                      <Image src={item.itemId.picture} alt={item.name} fluid rounded />
                     </Col>
                     <Col md={3}>
-                      <Link to={`/product/${item.product}`}>{item.name}</Link>
+                      <Link to={`/product/${item.itemId._id}`}>{item.itemId.title}</Link>
                     </Col>
-                    <Col md={2}>${item.price}</Col>
+                    <Col md={2}>${item.itemId.price}</Col>
                     <Col md={2}>
                       <Form.Control
                         as='select'
                         value={item.qty}
                         onChange={(e) =>
-                          dispatch(
-                            addToCart(item.product, Number(e.target.value))
-                          )
+                          setCartItems(e.target.value)
                         }
                       >
                         {[...Array(item.countInStock).keys()].map((x) => (
@@ -90,7 +102,7 @@ function CartScreen(props) {
                       <Button
                         type='button'
                         variant='info'
-                        onClick={() => removeFromCartHandler(item.product)}
+                        onClick={() => removeFromCartHandler(item._id)}
                       >
                         <i className='fa fa-trash'></i>
                       </Button>
@@ -106,11 +118,15 @@ function CartScreen(props) {
             <ListGroup variant='flush'>
               <ListGroup.Item>
                 <h2>
-                  Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items)
-                  {cartItems
-                    .reduce((a, c) => a + c.price * c.qty, 0)
-                    .toFixed(2)}
-                </h2>
+                Subtotal: 
+                {
+                  cartItems.reduce((total, item)=>{
+                    return total + item.itemId.price
+                  }, 0)
+                }
+                {/*  ({cartItems.reduce((a, c) => a + c.qty, 0)} itmes) : ${" "}
+                {cartItems.reduce((a, c) => a + c.price * c.qty, 0)} */}
+              </h2>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Button

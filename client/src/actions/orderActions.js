@@ -14,7 +14,7 @@ export const createOrder = (order) => async (dispatch, getState ) => {
             },
         });
 
-        // console.log('userInfo', userInfo);
+        console.log('data', data);
         
         dispatch({type:ORDER_CREATE_SUCCESS, payload: data.order });
         // remove all items from shopping cart and clear local storage after clicking placeOrder button and receiving data from backend 
