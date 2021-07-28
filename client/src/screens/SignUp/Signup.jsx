@@ -8,54 +8,58 @@ import { register } from '../../actions/userAction';
 import LoadingBox from '../../components/LoadingBox';
 import MessageBox from '../../components/MessageBox';
 
-const Signup = (props) => {
+const Signup = ({ location, history }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [message, setMessage] = useState(null);
 
-  // redirect user to shipping screen after sign in
-  //first check if there is redirect query param on the url
-  const redirect = props.location.search
-    ? props.location.search.split('=')[1]
-    : '/';
+  const dispatch = useDispatch();
 
   //get userInfo from redux store
   const userRegister = useSelector((state) => state.userRegister);
   const { userInfo, loading, error } = userRegister;
 
-  const dispatch = useDispatch();
+  // redirect user to shipping screen after sign in
+  //first check if there is redirect query param on the url
+  const redirect = location.search ? location.search.split('=')[1] : '/';
+
+  // if userInfo, redirect user on page load
+  useEffect(() => {
+    if (userInfo) {
+      history.push(redirect);
+    }
+  }, [history, userInfo, redirect]);
+
+
+
 
   // handle login form submit
   const submitHandler = (e) => {
     e.preventDefault();
     // check if password and confirm password match
     if (password !== confirmPassword) {
-      alert('password and confirm password do not match');
+      setMessage('Passwords do not match');
     } else {
       // register action here
       dispatch(register(name, email, password));
     }
   };
-  // if userInfo, redirect user on page load
-  useEffect(() => {
-    if (userInfo) {
-      props.history.push(redirect);
-    }
-  }, [userInfo, redirect, props.history]);
 
   return (
     <div className='col-10 mx-auto mt-5'>
-      <Row className=' d-flex justify-content-between pt-5'>
+      <div>
+        {message && <MessageBox variant='danger'>{message}</MessageBox>}
+        {loading && <LoadingBox />}
+        {error && <MessageBox variant='danger'>{error}</MessageBox>}
+      </div>
+      <Row className='d-flex justify-content-between pt-5'>
         <Col lg={6} md={6} sm={12}>
           <h2 className='my-4'> Sign up </h2>
           <p className='my-3'> Please fill this form to create an account! </p>
           <Form onSubmit={submitHandler}>
             <Row>
-              <div>
-                {loading && <LoadingBox />}
-                {error && <MessageBox variant='danger'>{error}</MessageBox>}
-              </div>
               <Col>
                 <Form.Control
                   type='text'

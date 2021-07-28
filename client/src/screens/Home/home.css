@@ -1,4 +1,3 @@
-
 #header h1 {
   font-size: 3rem;
   font-weight: 700;
@@ -12,8 +11,6 @@
   font-size: 2rem;
   font-weight: 700;
 }
-
-
 
 @keyframes up-down {
   0% {
@@ -43,22 +40,6 @@
 
 
 
-
-/*
-@media (max-width: 992px) {
-  #header {
-    height: 80vh;
-    text-align: center;
-  }
-  #header .header-img {
-    text-align: center;
-  }
-
-  #header .header-img img {
-    width: 60%;
-  }
-} */
-
 @media (max-width: 768px) {
   #header {
     margin-top: 50px;
@@ -74,11 +55,12 @@
   .main__row {
     text-align: center;
   }
+  .image-column {
+    display: none;
+  }
+
 }
-
-
 
 .rating_color {
-  color: #1EA2B8;
+  color: #1ea2b8;
 }
-

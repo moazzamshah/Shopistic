@@ -52,6 +52,6 @@ export const updateReview = (review, id) => (dispatch, getState) => {
 };
 
 export const deleteReview = (id) => (dispatch, getState) => {
-  const { userSignin: { userInfo } } = getState()
+  // const { userSignin: { userInfo } } = getState()
   axios.delete(`http://localhost:8000/api/review/${id}`).then((review) => dispatch({ type: REMOVE_REVIEW, reviewId: review.id }))
 };

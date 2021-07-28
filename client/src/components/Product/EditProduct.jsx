@@ -47,11 +47,12 @@ const EditProduct = () => {
       setCategory(res.data.category);
       setCountInStock(res.data.countInStock);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className='col-10 mx-auto mt-5'>
       <Row>
-        <Col xl={10} lg={10} sm={12} md={12}>
+        <Col >
           <Form onSubmit={submitHandler}>
             <hr />
             <h2 className='font-weight-bold my-4'> Update your product </h2>

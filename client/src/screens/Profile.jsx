@@ -10,7 +10,7 @@ const Profile = () => {
     <Container className='col-10 mx-auto'>
       <div className='mt-5'>
         <Button as={Link} variant='dark' to='/accountSetting'>
-          <i class='fa fa-edit'></i> Edit profile
+          <i className='fa fa-edit'></i> Edit profile
         </Button>
       </div>
       <CreateProduct />

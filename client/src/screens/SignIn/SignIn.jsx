@@ -8,23 +8,29 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import SigninSvg from '../../images/signin.svg';
 
-const SignIn = (props) => {
+const SignIn = ({ location, history }) => {
   // YUP validation
   // set states for email and password
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // redirect user to shipping screen after sign in
-  //first check if there is redirect query param on the url
-  const redirect = props.location.search
-    ? props.location.search.split('=')[1]
-    : '/';
+  const dispatch = useDispatch();
 
   //get userInfo from redux store
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo, loading, error } = userSignin;
 
-  const dispatch = useDispatch();
+  // redirect user to shipping screen after sign in
+  //first check if there is redirect query param on the url
+  const redirect = location.search ? location.search.split('=')[1] : '/';
+
+  // if userInfo, redirect user on page load
+  useEffect(() => {
+    if (userInfo) {
+      history.push(redirect);
+    }
+    console.log('userSignin');
+  }, [userInfo, redirect, history]);
 
   // handle login form submit
   const submitHandler = (e) => {
@@ -33,24 +39,17 @@ const SignIn = (props) => {
     dispatch(signin(email, password));
   };
 
-  // if userInfo, redirect user on page load
-  useEffect(() => {
-    if (userInfo) {
-      props.history.push(redirect);
-    }
-  }, [userInfo, redirect, props.history]);
-
   return (
     <>
+      <div>
+        {loading && <LoadingBox />}
+        {error && <MessageBox variant='danger'>{error}</MessageBox>}
+      </div>
       <Container className='col-10 mx-auto'>
         <Row className=' d-flex justify-content-between pt-5 '>
           <Col lg={4} md={6} sm={12}>
             <h2 className='my-4'> Sign In </h2>
             <Form onSubmit={submitHandler}>
-              <div>
-                {loading && <LoadingBox />}
-                {error && <MessageBox variant='danger'>{error}</MessageBox>}
-              </div>
               <Form.Group className='mb-3'>
                 <Form.Control
                   type='email'

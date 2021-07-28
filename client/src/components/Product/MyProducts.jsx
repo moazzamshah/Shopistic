@@ -29,10 +29,14 @@ const MyProducts = () => {
       <Row>
         {myProducts.map((item) => {
           return (
-            <Col sm={12} md={6} lg={4} xl={3}>
+            <Col key={item._id} sm={12} md={6} lg={4} xl={3}>
               <Card className='my-3 p-3 rounded shadow' key={item._id}>
                 <Link to={`/product/${item._id}`}>
-                  <Card.Img src={item.picture} alt='product' />
+                  <Card.Img
+                    style={{ height: '400px', objectFit: 'cover' }}
+                    src={`http://localhost:8000/${item.picture}`}
+                    alt='product'
+                  />
                 </Link>
                 <Card.Body>
                   <Link to={`/product/${item._id}`}>

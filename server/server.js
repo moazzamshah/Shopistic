@@ -7,7 +7,7 @@ const cartRoute = require('./routes/cart')
 const passRoute = require('./routes/fbRoute')
 const contactRoute = require('./routes/contactRoute');
 const reviewRoute = require('./routes/review')
-const orderRpute = require('./routes/order')
+const orderRoute = require('./routes/order')
 
 
 // client connection
@@ -29,6 +29,7 @@ mongoose.connect(DB_URL, {
     .then(() => console.log('MongoDB is successfully connected'))
     .catch(() => console.log('Database connection failed!'))
 
+app.use(express.static(__dirname + '/public'));
 
 app.use(cors());
 
@@ -46,7 +47,7 @@ app.use('/api/items' , itemsRoute)
 
 app.use('/api/cart' , cartRoute)
 app.use('/api/review' , reviewRoute)
-app.use('/api/orders' , orderRpute)
+app.use('/api/orders', orderRoute);
 app.use('/passport', passRoute); //passport js facebook route
 app.use('/contact', contactRoute); //route for contact us page
 

@@ -8,7 +8,7 @@ const AboutScreen = () => {
   return (
     <div className='col-10 mx-auto my-5'>
       <Row className='d-flex flex-column'>
-        <h2 className='font-weight-bold'>- Meet The Team 👋🏼 </h2>
+        <h2 className='font-weight-bold'>- Meet The Team 👋 </h2>
         <p className='text-muted font-italic my-4'>
           ‟Individuals can and do make a difference, but it takes a team to
           really mess things up.”
@@ -55,7 +55,10 @@ const AboutScreen = () => {
             <h3> Ahmad Alghetheth </h3>
             <p className='my-3 text-muted'> Full Stack Web Developer </p>
             <p>
-            Full-stack Web Developer (MERN stack) with 1-year experience, very passionate, high level of Learnability Team oriented, so excited and looking for new challenges and a position, to be helpful in Web Developing and to gain more experience.
+              Full-stack Web Developer (MERN stack) with 1-year experience, very
+              passionate, high level of Learnability Team oriented, so excited
+              and looking for new challenges and a position, to be helpful in
+              Web Developing and to gain more experience.
             </p>
           </div>
         </Col>

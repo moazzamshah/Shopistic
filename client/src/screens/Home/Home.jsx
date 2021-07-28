@@ -59,20 +59,24 @@ function HomeScreen() {
           <img className='animated w-100' src={HomeImage} alt='img' />
         </Col>
       </Row>
-      <div>
-        {loading ? (
-          <LoadingBox />
-        ) : error ? (
-          <MessageBox variant='danger'> {error} </MessageBox>
-        ) : (
-          <Row className='my-4'>
-            {products.map((product) => (
-              <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                <Product key={product._id} product={product} />
-              </Col>
-            ))}
-          </Row>
-        )}
+      <div className='pt-3'>
+        <h2 style={{fontSize:'2.5rem'}} className='text-center font-weight-bold pb-3'> Our Top Products </h2>
+        <hr />
+        <Row>
+          {loading ? (
+            <LoadingBox />
+          ) : error ? (
+            <MessageBox variant='danger'> {error} </MessageBox>
+          ) : (
+            <Row className='my-4'>
+              {products.map((product) => (
+                <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+                  <Product key={product._id} product={product} />
+                </Col>
+              ))}
+            </Row>
+          )}
+        </Row>
       </div>
     </Container>
   );
