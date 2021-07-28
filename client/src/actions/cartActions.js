@@ -10,12 +10,13 @@ const receiveCartItems = (cartItems) => ({
 
 export const fetchCartItems = (userId) => (dispatch, getState) => {
     const { userSignin: { userInfo } } = getState()
-    axios.get('http://localhost:8000/api/cart', {userId}, {
+    axios.get('http://localhost:8000/api/cart/getItems', {userId}, {
         headers: {
-          Authorization: `${userInfo?.token}`
+          Authorization: `${userInfo.token}`
         }
       })
     .then(cartItems => dispatch(receiveCartItems(cartItems)))
+
 }
 // when we define an action function, it should return an async function with dispatch
 // disptach and getState are redux-thunk functions to get access to redux store
@@ -27,7 +28,6 @@ export const addToCart = (productId, userId, qty) => async (dispatch, getState) 
           Authorization: `${userInfo?.token}`
         }
       });
-      console.log(data, "data")
     //using product data to dispatch
     dispatch({
         type: CART_ADD_ITEM,
@@ -41,17 +41,27 @@ export const addToCart = (productId, userId, qty) => async (dispatch, getState) 
 };
 
 //remove item from cart action
-export const removeFromCart = (productId) => (dispatch, getState) => {
-    dispatch({ type: CART_REMOVE_ITEM, payload: productId });
+export const removeFromCart = (id) => (dispatch, getState) => {
+    const { userSignin: { userInfo } } = getState()
+    axios.delete(`http://localhost:8000/api/cart/${id}`,{
+        headers: {
+          Authorization: `${userInfo.token}`
+        }
+      })
 
-    localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems));
+    .then(cartItemId => dispatch({ type: CART_REMOVE_ITEM, payload: id }));
+
+    // localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems));
 };
 
 // saveShipping address
 export const saveShippingAddress = (data) => (dispatch) => {
-    dispatch({ type: CART_SAVE_SHIPPING_ADDRESS, payload: data });
+    // dispatch({ type: CART_SAVE_SHIPPING_ADDRESS, payload: data });
     //save shipping address to localStorage
-    localStorage.setItem('shippingAddress', JSON.stringify(data));
+    /* localStorage.setItem('shippingAddress', JSON.stringify(data)); */
+    axios.post('http://localhost:8000/api/orders/shipping', data)
+    .then(res => console.log(res.data))
+
 };
 
 
