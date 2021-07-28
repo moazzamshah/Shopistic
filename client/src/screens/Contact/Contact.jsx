@@ -44,7 +44,7 @@ const Contact = () => {
                 />
               </Form.Group>
 
-              <Form.Group as={Col} controlId='formBasicEmail'>
+              <Form.Group as={Col} >
                 <Form.Control
                   type='email'
                   name='email'

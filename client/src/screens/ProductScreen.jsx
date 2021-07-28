@@ -7,11 +7,12 @@ import { detailsProduct } from '../actions/productActions';
 // import data from '../data/products';
 import {
   Row,
-  Container,
   Col,
   Card,
   Button,
-  ButtonToolbar,
+  ListGroup,
+  Image,
+  Form,
 } from 'react-bootstrap';
 
 function ProductScreen(props) {
@@ -49,59 +50,76 @@ function ProductScreen(props) {
         ) : error ? (
           <MessageBox variant='danger'> {error} </MessageBox>
         ) : (
-          <div>
-            <Button as={Link} variant='dark' className='my-3' to='/'>
-              <i class='fa fa-arrow-left'> </i> Go back
-            </Button>
+          <>
+            <Link className='my-3 btn btn-dark' to='/'>
+              <i className='fa fa-arrow-left'> </i> Go back
+            </Link>
 
             <div className='mt-3'>
-              <Card className='p-3'>
-                {/* product image */}
-                <Row className='justify-content-between align-items-center'>
-                  <Col xl={5} lg={6} sm={12} md={6} className=''>
-                    <Card.Img src={product.picture} alt={product.name} />
-                  </Col>
+              <Row className='justify-content-around'>
+                {/* Image Column */}
+                <Col sm={12} md={6} lg={4} xl={4}>
+                  <Image
+                    style={{ height: '500px', objectFit: 'cover' }}
+                    src={`http://localhost:8000/${product.picture}`}
+                    alt={product.name}
+                    fluid
+                  />
+                </Col>
 
-                  <Col xl={6} lg={6} sm={12} md={6} className='border-left pl-5'>
-                    <div>
-                      <ul>
-                        <li>
-                          <Card.Title className='text-capitalize'>
-                            <b>{product.title}</b>
-                          </Card.Title>
-                        </li>
-                        <li>
-                          {' '}
-                          <b>Price:</b> ${product.price}
-                        </li>
-                        <li>
-                          <b>Description:</b>
+                {/* Text Column */}
 
-                          <Card.Text>{product.description} </Card.Text>
-                        </li>
-                      </ul>
-                    </div>
-                    <div>
-                      <div>
-                        <b>Status</b>
-                      </div>
+                {/* Pehla Column */}
+                <Col className=' px-0' md={3}>
+                  <ListGroup variant='flush'>
+                    <ListGroup.Item>
+                      <h3>{product.title}</h3>
+                    </ListGroup.Item>
 
-                      <div>
-                        {product.countInStock > 0 ? (
-                          <span> In Stock</span>
-                        ) : (
-                          <span variant='danger'> Unavailable</span>
-                        )}
-                      </div>
+                    <ListGroup.Item>
+                      {' '}
+                      <strong>Price: </strong> ${product.price}
+                    </ListGroup.Item>
+
+                    <ListGroup.Item>
+                      <strong className='d-block'>Description:</strong>{' '}
+                      {product.description}
+                    </ListGroup.Item>
+                  </ListGroup>
+                </Col>
+
+                {/* Dusra column */}
+                <Col md={3}>
+                  <Card>
+                    {/* price and status */}
+                    <ListGroup>
+                      <ListGroup.Item>
+                        <Row>
+                          <Col>Price:</Col>
+                          <Col>
+                            <strong>${product.price}</strong>
+                          </Col>
+                        </Row>
+                      </ListGroup.Item>
+                      <ListGroup.Item>
+                        <Row>
+                          <Col>Status:</Col>
+                          <Col>
+                            {product.countInStock > 0
+                              ? 'In Stock'
+                              : 'Out Of Stock'}
+                          </Col>
+                        </Row>
+                      </ListGroup.Item>
 
                       {/* Check product quantity first */}
                       {product.countInStock > 0 && (
-                        <>
-                          <div>
-                            <div>Qty</div>
-                            <div>
-                              <select
-                                className='my-3'
+                        <ListGroup.Item>
+                          <Row>
+                            <Col>Qty</Col>
+                            <Col>
+                              <Form.Control
+                                as='select'
                                 value={qty}
                                 onChange={(e) => setQty(e.target.value)}
                               >
@@ -112,29 +130,35 @@ function ProductScreen(props) {
                                     </option>
                                   )
                                 )}
-                              </select>
-                            </div>
-                          </div>
-
-                          <Button variant='info' onClick={addToCartHandler}>
-                            Add to Cart
-                          </Button>
-                          <div>
-                            <Link
-                              className='btn btn-warning mt-3'
-                              to={`/review/create/${product._id}`}
-                            >
-                              Review
-                            </Link>
-                          </div>
-                        </>
+                              </Form.Control>
+                            </Col>
+                          </Row>
+                        </ListGroup.Item>
                       )}
-                    </div>
-                  </Col>
-                </Row>
-              </Card>
+
+                      <ListGroup.Item>
+                        <Button
+                          className='my-2'
+                          variant='info'
+                          onClick={addToCartHandler}
+                        >
+                          Add to Cart
+                        </Button>
+
+                        <Link
+                          className='btn btn-dark mx-1 my-2'
+                          to={`/review/create/${product._id}`}
+                        >
+                          Review
+                        </Link>
+                      </ListGroup.Item>
+                    </ListGroup>
+                    {/*========price and status end====== */}
+                  </Card>
+                </Col>
+              </Row>
             </div>
-          </div>
+          </>
         )}
       </div>
     </>

@@ -3,6 +3,19 @@ const router = express.Router();
 const Item = require('../models/Item');
 const passport = require('passport');
 const User = require('../models/User');
+const multer = require('multer');
+
+//============== Settings for multer ===============
+const storage = multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, 'public/images');
+  },
+  filename: function (req, file, callback) {
+    callback(null, Date.now() + '_' + file.originalname);
+  },
+});
+
+const upload = multer({ storage });
 
 // get all the products
 router.get('/', (req, res) => {
@@ -17,21 +30,22 @@ router.get('/', (req, res) => {
 router.post(
   '/create',
   passport.authenticate('jwt', { session: false }),
+  upload.single('picture'),
   (req, res) => {
-    const { title, description, price, picture, category, countInStock } =
-      req.body;
+    const { title, description, price, category, countInStock } = req.body;
     if (!title || !price) {
       return res
         .status(422)
         .json({ error: 'please add all the required fields' });
     }
     req.user.password = undefined;
+
     const newItem = new Item({
       seller: req.user,
       title,
       description,
       price,
-      picture,
+      picture: '/images/' + req.file.filename,
       category,
       countInStock,
     });

@@ -5,7 +5,7 @@ import {
     PRODUCT_LIST_FAIL,
     PRODUCT_DETAILS_REQUEST,
     PRODUCT_DETAILS_SUCCESS,
-    PRODUCT_DETAILS_FAIL, RECEIVE_PRODUCT, CREATE_PRODUCT, REMOVE_PRODUCT
+    PRODUCT_DETAILS_FAIL, RECEIVE_PRODUCT, REMOVE_PRODUCT
 } from '../constants/productConstants';
 
 
@@ -43,12 +43,14 @@ export const receiveItem = item => {
 
 export const createItem = (data) => (dispatch, getState) => {
     const { userSignin: { userInfo } } = getState()
-    axios.post(`http://localhost:8000/api/items/create`, data, {
+    // console.log(data);
+    axios
+      .post(`http://localhost:8000/api/items/create`, data, {
         headers: {
-            Authorization: `${userInfo?.token}`
-        }
-    })
-        .then((item) => dispatch(receiveItem(item.data)))
+          Authorization: `${userInfo?.token}`,
+        },
+      })
+      .then((item) => dispatch(receiveItem(item.data)));
 };
 
 export const editItem = (item, id) => (dispatch, getState) => (

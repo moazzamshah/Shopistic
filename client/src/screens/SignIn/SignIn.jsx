@@ -8,23 +8,29 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import SigninSvg from '../../images/signin.svg';
 
-const SignIn = (props) => {
+const SignIn = ({ location, history }) => {
   // YUP validation
   // set states for email and password
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // redirect user to shipping screen after sign in
-  //first check if there is redirect query param on the url
-  const redirect = props.location.search
-    ? props.location.search.split('=')[1]
-    : '/';
+  const dispatch = useDispatch();
 
   //get userInfo from redux store
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo, loading, error } = userSignin;
 
-  const dispatch = useDispatch();
+  // redirect user to shipping screen after sign in
+  //first check if there is redirect query param on the url
+  const redirect = location.search ? location.search.split('=')[1] : '/';
+
+  // if userInfo, redirect user on page load
+  useEffect(() => {
+    if (userInfo) {
+      history.push(redirect);
+    }
+    console.log('userSignin');
+  }, [userInfo, redirect, history]);
 
   // handle login form submit
   const submitHandler = (e) => {
@@ -32,13 +38,6 @@ const SignIn = (props) => {
     // signin action here
     dispatch(signin(email, password));
   };
-
-  // if userInfo, redirect user on page load
-  useEffect(() => {
-    if (userInfo) {
-      props.history.push(redirect);
-    }
-  }, [userInfo, redirect, props.history]);
 
   return (
     <>
