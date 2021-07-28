@@ -11,6 +11,9 @@ router.get('/mine', passport.authenticate('jwt', { session: false }), async (req
     res.json(orders);
 });
 
+router.post('/shipping', (req, res) =>{
+    console.log(req.body)
+})
 // create a new order  
 router.post('/', passport.authenticate('jwt', { session: false }), async (req, res) => {
     if (req.body.orderItems.length === 0) {
