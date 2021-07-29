@@ -11,7 +11,8 @@ import ReviewImage from '../../images/review.svg';
 const CreateReview = () => {
   const [title, setTitle] = useState("");
   const [comment, setComment] = useState("");
-  const [rating, setRating] = useState();
+
+  const [rating, setRating] = useState(1);
   const [reviews, setReviews] = useState([]);
   const dispatch = useDispatch();
 

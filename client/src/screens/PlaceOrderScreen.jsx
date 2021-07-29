@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { createOrder } from '../actions/orderActions';
-import CheckoutSteps from '../components/CheckoutSteps';
-import LoadingBox from '../components/LoadingBox';
-import MessageBox from '../components/MessageBox';
-import { ORDER_CREATE_RESET } from '../constants/orderConstants';
+
+/* import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { createOrder } from "../actions/orderActions";
+import CheckoutSteps from "../components/CheckoutSteps";
+import LoadingBox from "../components/LoadingBox";
+import MessageBox from "../components/MessageBox";
+import { ORDER_CREATE_RESET } from "../constants/orderConstants";
 
 function PlaceOrderScreen(props) {
   // get the cart data from redux store
@@ -169,3 +170,51 @@ function PlaceOrderScreen(props) {
 }
 
 export default PlaceOrderScreen;
+ */
+
+import React, { useState } from 'react'
+import { Form, Button } from 'react-bootstrap';
+
+const PlaceOrderScreen = () => {
+  const [isSubmited, setIsSubmited] = useState(null);
+  const submitHandler = (e) =>{
+    e.preventDefault();
+    setIsSubmited(true);
+  }
+  return isSubmited ? (
+    <div className='container'>
+      <h2>
+        we recieved your order Thank you for your using <b>Shopistic</b>
+        your order will arrive in 3 days.
+      </h2>
+    </div>
+  ) : (
+    <div>
+      <h1>paypal account: </h1> 
+      <Form onSubmit={submitHandler}>
+              <Form.Group className='mb-3'>
+                <Form.Control
+                  type='email'
+                  id='email'
+                  placeholder='Enter email'
+                  required={true}
+                />
+              </Form.Group>
+
+              <Form.Group className='mb-3'>
+                <Form.Control
+                  type='password'
+                  id='password'
+                  placeholder='Password'
+                  required={true}
+                />
+              </Form.Group>
+              <Button variant='info' type='submit' className='my-3 w-100'>
+                Login
+              </Button>
+      </Form>
+    </div>
+  )
+}
+
+export default PlaceOrderScreen

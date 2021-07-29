@@ -4,14 +4,16 @@ import { savePaymentMethod } from '../actions/cartActions';
 import CheckoutSteps from '../components/CheckoutSteps';
 
 function PaymentMethodScreen(props) {
-  // set condition for paymentMethodScreen - only after user has filled in shipping address
-  //  get shippingAddress data from redux store
-  const cart = useSelector((state) => state.cart);
-  const { shippingAddress } = cart;
-  //if user has not filled shippingaddress, redirect to shippingscreen
-  if (!shippingAddress.address) {
-    props.history.push('/shipping');
-  }
+
+    // set condition for paymentMethodScreen - only after user has filled in shipping address 
+    //  get shippingAddress data from redux store
+    // const cart = useSelector(state => state.cart);
+    // const { shippingAddress } = cart;
+    //if user has not filled shippingaddress, redirect to shippingscreen
+    // if (!shippingAddress.address) {
+    //     props.history.push('/shipping');
+    // }
+
 
   // set states
   const [paymentMethod, setPaymentMethod] = useState('PayPal');
@@ -19,14 +21,16 @@ function PaymentMethodScreen(props) {
   //use dispatch
   const dispatch = useDispatch();
 
-  //submit payment handler
-  const submitHandler = (e) => {
-    e.preventDefault();
-    // dispatch paymnentMethod action
-    dispatch(savePaymentMethod(paymentMethod));
-    // redirect user to placeOrder screen
-    props.history.push('/placeorder');
-  };
+
+    //submit payment handler 
+    const submitHandler = (e) => {
+        e.preventDefault();
+        // dispatch paymnentMethod action 
+        // dispatch(savePaymentMethod(paymentMethod));
+        // redirect user to placeOrder screen
+        props.history.push('/placeorder');
+    };
+
 
   return (
     <div>

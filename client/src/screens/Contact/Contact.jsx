@@ -8,6 +8,7 @@ const Contact = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [isSubmited, setIsSubmited] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,9 +25,16 @@ const Contact = () => {
     setName('');
     setEmail('');
     setMessage('');
+    setIsSubmited(true);
   };
 
-  return (
+  return isSubmited ? (
+    <div className='container'>
+      <h2>
+        we recieved your message Thank you for your using <b> Shopistic</b>
+      </h2>
+    </div>
+  ) : (
     <div className='col-10 mx-auto mt-5'>
       <Row className='d-flex justify-content-between pt-5'>
         <Col lg={6} md={6} sm={12}>
