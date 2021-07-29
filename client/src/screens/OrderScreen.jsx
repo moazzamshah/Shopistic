@@ -9,7 +9,7 @@ import MessageBox from '../components/MessageBox';
 import { ORDER_PAY_RESET } from '../constants/orderConstants';
 
 export default function OrderScreen(props) {
-    // Get the orderId from params 
+    // Get the orderId from params
     const orderId = props.match.params.id;
 
     //get orderDetails from redux store
@@ -18,17 +18,17 @@ export default function OrderScreen(props) {
     //getorderPay from redux store
     const orderPay = useSelector((state) => state.orderPay);
     const { error: errorPay, success: successPay, loading: loadingPay } = orderPay;
-    //set PayPal REST API info 
+    //set PayPal REST API info
     //https://developer.paypal.com/docs/checkout/reference/server-integration/setup-sdk/
     const [ sdkReady, setSdkReady ] = useState(false);
     const dispatch = useDispatch();
 
 
     useEffect(() => {
-        // get Paypal clientId from backend 
+        // get Paypal clientId from backend
         const addPayPalScript = async () => {
             const { data } = await axios.get('/api/config/paypal');
-            //create a paypal script element 
+            //create a paypal script element
             const script = document.createElement('script');
             script.type = 'text/javascript';
             script.src = `https://www.paypal.com/sdk/js?client-id=${data}`;
@@ -37,7 +37,7 @@ export default function OrderScreen(props) {
             script.onload = () => {
                 setSdkReady(true);
             };
-            //add the script to body as the last child 
+            //add the script to body as the last child
             document.body.appendChild(script);
         };
 
@@ -64,9 +64,9 @@ export default function OrderScreen(props) {
     // paypal payment - paymentResult is an obj returned from paypal
     const successPaymentHandler = (paymentResult) => {
         // console.log('paymentResult:', paymentResult);
-        //dispatch payOrder action 
+        //dispatch payOrder action
         dispatch(payOrder(order, paymentResult));
-      
+
     };
 
 
@@ -185,13 +185,13 @@ export default function OrderScreen(props) {
                                     {!sdkReady ? (
                                         <LoadingBox />
                                     ) : (
-                                        <>  
+                                        <>
                                             {
                                                 loadingPay && <LoadingBox />
                                             }
                                             {
                                                 errorPay && <MessageBox variant='danger'>{errorPay}</ MessageBox>
-                                            }   
+                                            }
                                             <PayPalButton
                                                 amount={ order.totalPrice }
                                                 onSuccess={ successPaymentHandler }
@@ -200,8 +200,8 @@ export default function OrderScreen(props) {
                                     ) }
                                 </li>
                             ) }
-                            
-      
+
+
                         </ul>
                     </div>
                 </div>

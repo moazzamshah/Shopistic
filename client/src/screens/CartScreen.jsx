@@ -63,10 +63,11 @@ function CartScreen(props) {
   };
 
   return (
-    <div className='col-10 mx-auto mt-5'>
+    <div className='col-10 mx-auto mt-3'>
+    <Link to='/' className='btn btn-dark mb-5'> Add More </Link>
       <Row>
         <Col md={8}>
-          <h2 className='font-weight-bold my-3'>Shopping Cart </h2>
+          <h2 className='font-weight-bold'>Shopping Cart </h2>
           {cartItems.length === 0 ? (
             <MessageBox>
               Your cart is empty <Link to='/'> Go Shopping</Link>
@@ -77,7 +78,7 @@ function CartScreen(props) {
                 <ListGroup.Item key={index}>
                   <Row>
                     <Col md={2}>
-                      <Image src={item.itemId.picture} alt={item.name} fluid rounded />
+                      <Image src={item.itemId.picture} alt={item.name} />
                     </Col>
                     <Col md={3}>
                       <Link to={`/product/${item.itemId._id}`}>{item.itemId.title}</Link>
@@ -114,11 +115,11 @@ function CartScreen(props) {
           )}
         </Col>
         <Col md={4}>
-          <Card>
+          <Card className='mt-5'>
             <ListGroup variant='flush'>
               <ListGroup.Item>
                 <h2>
-                Subtotal: 
+                Subtotal:
                 {
                   cartItems.reduce((total, item)=>{
                     return total + item.itemId.price

@@ -40,12 +40,13 @@ function ProductScreen(props) {
 
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
- 
+
   // console.log(userInfo)
   // direct to cart page when add to cart btn is clicked
   const addToCartHandler = () => {
     dispatch(addToCart(productId, userInfo.userId, qty))
-    props.history.push(`/cart`);
+    // props.history.push(`/cart`);
+     window.location.href = '/cart';
   };
 
   return (
