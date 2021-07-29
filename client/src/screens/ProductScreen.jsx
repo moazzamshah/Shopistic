@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { detailsProduct } from '../actions/productActions';
-import { addToCart } from '../actions/cartActions'
+import { addToCart } from '../actions/cartActions';
 // import data from '../data/products';
 import {
   Row,
@@ -27,6 +27,9 @@ function ProductScreen(props) {
 
   const [qty, setQty] = useState(1);
 
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
+
   // use store productDetails to replace product from seed data
   const productDetails = useSelector((state) => state.productDetails);
   // decontruct product, loading, error from productDetails
@@ -38,15 +41,14 @@ function ProductScreen(props) {
     dispatch(detailsProduct(productId));
   }, [dispatch, productId]);
 
-  const userSignin = useSelector((state) => state.userSignin);
-  const { userInfo } = userSignin;
-
   // console.log(userInfo)
   // direct to cart page when add to cart btn is clicked
   const addToCartHandler = () => {
-    dispatch(addToCart(productId, userInfo.userId, qty))
-    // props.history.push(`/cart`);
-     window.location.href = '/cart';
+    !userInfo
+      ? props.history.push(`/signin`)
+      : dispatch(addToCart(productId, userInfo.userId, qty));
+
+    window.location.href = '/cart';
   };
 
   return (
@@ -145,19 +147,21 @@ function ProductScreen(props) {
 
                       <ListGroup.Item>
                         <Button
-                          className='my-2'
+                          className='my-2 btn btn-info'
                           variant='info'
                           onClick={addToCartHandler}
+                          disabled={!userInfo}
                         >
                           Add to Cart
                         </Button>
 
-                        <Link
+                        <Button
+                        href={`/review/create/${product._id}`}
+                        disabled={!userInfo}
                           className='btn btn-dark mx-1 my-2'
-                          to={`/review/create/${product._id}`}
                         >
                           Review
-                        </Link>
+                        </Button>
                       </ListGroup.Item>
                     </ListGroup>
                     {/*========price and status end====== */}

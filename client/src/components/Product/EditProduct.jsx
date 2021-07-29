@@ -52,7 +52,7 @@ const EditProduct = () => {
   return (
     <div className='col-10 mx-auto mt-5'>
       <Row>
-        <Col >
+        <Col>
           <Form onSubmit={submitHandler}>
             <hr />
             <h2 className='font-weight-bold my-4'> Update your product </h2>
@@ -95,12 +95,12 @@ const EditProduct = () => {
                 </Form.Group>
               </Col>
               <Col>
-                <Form.Group>
-                  <Form.Label> Add Picture </Form.Label>
-                  <Form.Control
-                    type='text'
-                    value={picture}
-                    onChange={(e) => setPicture(e.target.value)}
+                <Form.Group controlId='formFile' className=''>
+                  <Form.File
+                    label='Upload a picture'
+                    type='file'
+                    name='picture'
+                    // onChange={(e) => setPicture(e.target.files[0])}
                   />
                 </Form.Group>
               </Col>
@@ -117,28 +117,11 @@ const EditProduct = () => {
                 onChange={(e) => setCountInStock(e.target.value)}
               />
             </Form.Group>
-
             <Form.Group>
-              <Form.Label>Category </Form.Label>
-              <div>
-                <select
-                  name='Category'
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value)}
-                >
-                  <option value='clothing'>Clothing</option>
-                  <option value='tech'>Tech</option>
-                  <option value='sport'>Sport</option>
-                  <option value='pets'>Pets</option>
-                  <option value='food'>Food</option>
-                  <option value='toys'>Toys</option>
-                  <option value='accessories'>Accessories</option>
-                </select>
-              </div>
+              <Button variant='info' type='submit' className='mt-3'>
+                Save Changes
+              </Button>
             </Form.Group>
-            <Button variant='info' type='submit'>
-              Save Changes
-            </Button>
           </Form>
         </Col>
       </Row>
