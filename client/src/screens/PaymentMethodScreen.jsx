@@ -6,12 +6,12 @@ import CheckoutSteps from '../components/CheckoutSteps';
 function PaymentMethodScreen(props) {
     // set condition for paymentMethodScreen - only after user has filled in shipping address 
     //  get shippingAddress data from redux store
-    const cart = useSelector(state => state.cart);
-    const { shippingAddress } = cart;
+    // const cart = useSelector(state => state.cart);
+    // const { shippingAddress } = cart;
     //if user has not filled shippingaddress, redirect to shippingscreen
-    if (!shippingAddress.address) {
-        props.history.push('/shipping');
-    }
+    // if (!shippingAddress.address) {
+    //     props.history.push('/shipping');
+    // }
 
     // set states 
     const [paymentMethod, setPaymentMethod] = useState('PayPal');
@@ -23,7 +23,7 @@ function PaymentMethodScreen(props) {
     const submitHandler = (e) => {
         e.preventDefault();
         // dispatch paymnentMethod action 
-        dispatch(savePaymentMethod(paymentMethod));
+        // dispatch(savePaymentMethod(paymentMethod));
         // redirect user to placeOrder screen
         props.history.push('/placeorder');
     };
