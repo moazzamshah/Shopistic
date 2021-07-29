@@ -31,7 +31,7 @@ function ShippingAddressScreen(props) {
     e.preventDefault();
     // dispatch save shipping address action
     // dispatch(saveShippingAddress({fullName, address, city, zipcode, country}));
-    axios
+    /* axios
       .post('http://localhost:8000/api/orders/shipping', {
         fullName,
         address,
@@ -39,7 +39,8 @@ function ShippingAddressScreen(props) {
         zipcode,
         country,
       })
-      .then((res) => console.log(res.data));
+      .then((res) => console.log(res.data)); */
+      window.location.href = '/payment'
     //direct user to PaymentScreen
     // props.history.push("/payment");
   };

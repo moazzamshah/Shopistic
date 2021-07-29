@@ -13,7 +13,6 @@ import NoPageFound from './screens/NoPageFound';
 import ForgotPassword from './components/auth/ForgotPassword';
 import ProfileScreen from './screens/ProfileScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen'
-// import singleProduct from './components/Product/single_product'
 import Cart from './screens/CartScreen'
 import CreateReview from './components/Rating/CreateReview';
 import ProductScreen from './screens/ProductScreen'
@@ -22,6 +21,8 @@ import MyProducts from './components/Product/MyProducts';
 import Profile from './screens/Profile';
 import EditProduct from './components/Product/EditProduct';
 import ShippingAddressScreen from './screens/ShippingAddressScreen';
+import PaymentMethodScreen from './screens/PaymentMethodScreen'
+
 
 
 
@@ -41,6 +42,8 @@ const App = () => {
           <Route path='/profile' component={Profile} />
           <Route path='/accountSetting' component={ProfileScreen} />
           <Route path='/order' component={ShippingAddressScreen} />
+          <Route path='/payment' component={PaymentMethodScreen} />
+          <Route path='/placeorder' component={PlaceOrderScreen} />
           <Route path='/product/:id' component={ProductScreen} />
           <Route path='/createProduct' component={CreateProduct} />
           <Route path='/myproducts' component={MyProducts} />
