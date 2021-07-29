@@ -42,10 +42,10 @@ const NavBar = () => {
               </NavDropdown.Item>
             </NavDropdown>
 
-            <Nav.Link  as={Link} to='/contact'>
+            <Nav.Link as={Link} to='/contact'>
               Contact
             </Nav.Link>
-            <Nav.Link  as={Link} to='/about'>
+            <Nav.Link as={Link} to='/about'>
               About Us
             </Nav.Link>
           </Nav>
@@ -54,6 +54,9 @@ const NavBar = () => {
           <Nav className='ml-auto' variant=''>
             {userInfo && (
               <>
+                <Nav.Link href='/cart'>
+                  <i className='fa fa-shopping-cart'></i> Cart
+                </Nav.Link>
                 <NavDropdown
                   className='font-weight-normal'
                   title={userInfo.name + ' 👤'}
