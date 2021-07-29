@@ -35,7 +35,7 @@ router.post("/register", (req, res) => {
                         .then(user => {
                             const payload = { id: user.id, email: user.email, name: user.name };
 
-                            jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 3600 }, (err, token) => {
+                            jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 3600 * 24}, (err, token) => {
                                 res.json({
                                     success: true,
                                     token: "Bearer " + token,
@@ -70,7 +70,7 @@ router.post("/login", (req, res) => {
             if (isMatch) {
                 const payload = { id: user.id, email: user.email, name: user.name };
 
-                jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 3600 }, (err, token) => {
+                jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 3600 * 24}, (err, token) => {
                     res.json({
                         success: true,
                         token: "Bearer " + token,
