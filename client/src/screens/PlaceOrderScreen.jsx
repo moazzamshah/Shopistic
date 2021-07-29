@@ -183,7 +183,7 @@ const PlaceOrderScreen = () => {
   return isSubmited ? (
     <div className='container'>
       <h2>
-        we recieved your Thank you for your using <b>Shopistic</b>
+        we recieved your order Thank you for your using <b>Shopistic</b>
         your order will arrive in 3 days.
       </h2>
     </div>
