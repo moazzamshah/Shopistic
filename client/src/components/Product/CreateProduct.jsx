@@ -51,7 +51,7 @@ const CreateProduct = () => {
     //     countInStock,
     //   })
     // );
-    // window.location.href = '/profile';
+    window.location.href = '/profile';
 
   };
   return (

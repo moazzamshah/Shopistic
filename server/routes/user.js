@@ -38,7 +38,9 @@ router.post("/register", (req, res) => {
                             jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: 3600 }, (err, token) => {
                                 res.json({
                                     success: true,
-                                    token: "Bearer " + token
+                                    token: "Bearer " + token,
+                                    name: user.name,
+                                    userId: user.id
                                 });
                             });
                         })

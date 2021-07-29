@@ -30,7 +30,7 @@ router.post('/backend/sendEmail', (req, res) => {
   sgMail.setApiKey(process.env.SEND_GRID_API);
   const { name, message, email } = req.body;
   const msg = {
-    to: 'moazzam.shah696@gmail.com',
+    to: 'a.alghetheth@gmail.com',
     from: `${email}`,
     subject: 'Sending from Send Grid',
     text: 'Just a sample message sending from sendgrid',
