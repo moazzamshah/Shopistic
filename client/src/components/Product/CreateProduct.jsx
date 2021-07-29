@@ -51,20 +51,20 @@ const CreateProduct = () => {
     //     countInStock,
     //   })
     // );
-    // window.location.href = '/profile';
+    window.location.href = '/profile';
 
   };
   return (
     <>
       <Row>
-        <Col xl={10}>
+        <Col>
           <Form
             method='post'
             // encType='multipart/form-data'
             onSubmit={submitHandler}
           >
             <hr />
-            <h2 className='font-weight-bold my-4'> Add your product </h2>
+            <h2 className='font-weight-bold my-5 text-center'> Add your product </h2>
             <Row>
               <Col>
                 <Form.Group>
@@ -113,9 +113,6 @@ const CreateProduct = () => {
                     name='picture'
                     onChange={(e) => setPicture(e.target.files[0])}
                   />
-                  {/* <Button variant='info' type='submit'>
-                    Submit
-                  </Button> */}
                 </Form.Group>
               </Col>
             </Row>
@@ -129,10 +126,16 @@ const CreateProduct = () => {
               />
             </Form.Group>
 
-            <Button type='submit' variant='info' className='my-2' >
+            <Button type='submit' variant='info' className='my-2'>
               Submit
             </Button>
           </Form>
+        </Col>
+      </Row>
+      <Row>
+        <Col className='text-center'>
+          <h2 className='font-weight-bold my-4'> My Products </h2>
+          <hr />
         </Col>
       </Row>
     </>

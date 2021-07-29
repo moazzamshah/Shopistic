@@ -30,7 +30,7 @@ const NavBar = () => {
           {/* ================ Nav Items on left ================ */}
           <Nav>
             <NavDropdown title='Start' id='basic-nav-dropdown'>
-              <NavDropdown.Item as={Link} to='/'>
+              <NavDropdown.Item as={Link} to='/profile'>
                 Start your business
               </NavDropdown.Item>
               <NavDropdown.Divider />
