@@ -7,7 +7,7 @@ exports.contact = (req, res) => {
     sgMail.setApiKey(process.env.SEND_GRID_API);
     const { name, message, email } = req.body;
     const msg = {
-        to: 'a.alghetheth@gmail.com',
+        to: 'moazzam.shah106@gmail.com',
         from: `${email}`,
         subject: 'Sending from Send Grid',
         text: 'Just a sample message sending from sendgrid',
