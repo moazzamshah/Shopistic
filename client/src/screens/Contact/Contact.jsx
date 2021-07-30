@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { Form, Col, Row, Button } from 'react-bootstrap';
+import { Form, Col, Row, Button, Alert } from 'react-bootstrap';
 import './contact.css';
 import axios from 'axios';
 import ContactSvg from '../../images/contact.svg';
+import { Link } from 'react-router-dom';
 
 const Contact = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [isSubmited, setIsSubmited] = useState(null);
+  const [isSubmitted, setIsSubmitted] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,14 +26,19 @@ const Contact = () => {
     setName('');
     setEmail('');
     setMessage('');
-    setIsSubmited(true);
+    setIsSubmitted(true);
   };
 
-  return isSubmited ? (
-    <div className='container'>
-      <h2>
-        we recieved your message Thank you for your using <b> Shopistic</b>
-      </h2>
+  return isSubmitted ? (
+    <div className='mt-5 d-flex flex-column justify-content-between align-items-center'>
+      <Alert variant='success'>
+        🎉 We received your message Thank you for your using <b> Shopistic </b> {' '}
+        🎉
+      </Alert>
+      <Link className='btn btn-dark' to='/'>
+        {' '}
+        Go Back{' '}
+      </Link>
     </div>
   ) : (
     <div className='col-10 mx-auto mt-5'>
@@ -52,7 +58,7 @@ const Contact = () => {
                 />
               </Form.Group>
 
-              <Form.Group as={Col} >
+              <Form.Group as={Col}>
                 <Form.Control
                   type='email'
                   name='email'
