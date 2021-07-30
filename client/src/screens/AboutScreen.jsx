@@ -1,6 +1,6 @@
 import React from 'react';
 import AslanImage from '../images/aslan.jpeg';
-import AhmadImage from '../images/ahmad.png';
+import AhmadImage from '../images/ahmadPic2.jpg';
 import SyedImage from '../images/syed.jpg';
 import { Col, Row } from 'react-bootstrap';
 
@@ -53,7 +53,7 @@ const AboutScreen = () => {
           </div>
           <div className='text-group'>
             <h3> Ahmad Alghetheth </h3>
-            <p className='my-3 text-muted'> Full Stack Web Developer </p>
+            <p className='my-3 text-muted'> Backend Web Developer </p>
             <p>
               Full-stack Web Developer (MERN stack) with 1-year experience, very
               passionate, high level of Learnability Team oriented, so excited
