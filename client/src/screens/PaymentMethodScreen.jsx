@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { savePaymentMethod } from '../actions/cartActions';
 import CheckoutSteps from '../components/CheckoutSteps';
+import { Form, Button, Col, Container } from 'react-bootstrap';
 
 function PaymentMethodScreen(props) {
 
-    // set condition for paymentMethodScreen - only after user has filled in shipping address 
+    // set condition for paymentMethodScreen - only after user has filled in shipping address
     //  get shippingAddress data from redux store
     // const cart = useSelector(state => state.cart);
     // const { shippingAddress } = cart;
@@ -22,10 +23,10 @@ function PaymentMethodScreen(props) {
   const dispatch = useDispatch();
 
 
-    //submit payment handler 
+    //submit payment handler
     const submitHandler = (e) => {
         e.preventDefault();
-        // dispatch paymnentMethod action 
+        // dispatch paymnentMethod action
         // dispatch(savePaymentMethod(paymentMethod));
         // redirect user to placeOrder screen
         props.history.push('/placeorder');
@@ -33,42 +34,40 @@ function PaymentMethodScreen(props) {
 
 
   return (
-    <div>
+    <div className='col-10 mx-auto mt-5'>
       <CheckoutSteps steps1 steps2 steps3 />
-      <form className='form' onSubmit={submitHandler}>
-        <div>
-          <h1>Payment Method</h1>
-        </div>
-        <div>
-          <div>
-            <input
+      <h1>Payment Method</h1>
+      <Form className='form' onSubmit={submitHandler}>
+        <Form.Group>
+          <Col>
+            <Form.Label as='legend'>Select Method</Form.Label>
+            <Form.Check
+              className='my-2'
               type='radio'
+              label='PayPal or Credit Card'
               name='paymentMethod'
               id='paypal'
               value='PayPal'
-              required
               checked
               onChange={(e) => setPaymentMethod(e.target.value)}
-            />
-            <label htmlFor='paypal'>PayPal</label>
-          </div>
-          <div>
-            <input
+            ></Form.Check>
+
+            <Form.Check
+              className='mb-2'
               type='radio'
+              label='Stripe'
               name='paymentMethod'
               id='stripe'
               value='Stripe'
               required
               onChange={(e) => setPaymentMethod(e.target.value)}
-            />
-            <label htmlFor='stripe'>Stripe</label>
-          </div>
-
-          <button type='submit' className='primary'>
-            Continue
-          </button>
-        </div>
-      </form>
+            ></Form.Check>
+            <Button type='submit' variant='info'>
+              Continue
+            </Button>
+          </Col>
+        </Form.Group>
+      </Form>
     </div>
   );
 }

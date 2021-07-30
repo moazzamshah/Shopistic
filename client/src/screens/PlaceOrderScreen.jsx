@@ -173,48 +173,60 @@ export default PlaceOrderScreen;
  */
 
 import React, { useState } from 'react'
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Alert, Row, Col, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import PaySvg from '../images/pay.svg';
 
 const PlaceOrderScreen = () => {
-  const [isSubmited, setIsSubmited] = useState(null);
+  const [isSubmitted, setIsSubmitted] = useState(null);
   const submitHandler = (e) =>{
     e.preventDefault();
-    setIsSubmited(true);
+    setIsSubmitted(true);
   }
-  return isSubmited ? (
-    <div className='container'>
-      <h2>
-        we recieved your order Thank you for your using <b>Shopistic</b>
-        your order will arrive in 3 days.
-      </h2>
+  return isSubmitted ? (
+    <div className='mt-5 d-flex flex-column justify-content-between align-items-center'>
+      <Alert variant='success'>
+        🎉 Congratulations you have successfully placed your order 🎉
+      </Alert>
+      <Link className='btn btn-dark' to='/'>
+        {' '}
+        Go Back{' '}
+      </Link>
     </div>
   ) : (
-    <div>
-      <h1>paypal account: </h1> 
-      <Form onSubmit={submitHandler}>
-              <Form.Group className='mb-3'>
-                <Form.Control
-                  type='email'
-                  id='email'
-                  placeholder='Enter email'
-                  required={true}
-                />
-              </Form.Group>
+    <div className='mt-5 col-10 mx-auto'>
+      <Row className='d-flex justify-content-between pt-5'>
+        <Col lg={4} md={6} sm={12}>
+          <h1 className='mb-5'>Paypal account </h1>
+          <Form onSubmit={submitHandler}>
+            <Form.Group className='mb-3'>
+              <Form.Control
+                type='email'
+                id='email'
+                placeholder='Enter email'
+                required={true}
+              />
+            </Form.Group>
 
-              <Form.Group className='mb-3'>
-                <Form.Control
-                  type='password'
-                  id='password'
-                  placeholder='Password'
-                  required={true}
-                />
-              </Form.Group>
-              <Button variant='info' type='submit' className='my-3 w-100'>
-                Login
-              </Button>
-      </Form>
+            <Form.Group className='mb-3'>
+              <Form.Control
+                type='password'
+                id='password'
+                placeholder='Password'
+                required={true}
+              />
+            </Form.Group>
+            <Button variant='info' type='submit' className='my-2 w-100'>
+              <i className='fa fa-paypal'></i> Pay Now
+            </Button>
+          </Form>
+        </Col>
+        <Col lg={6} md={6} sm={12}>
+          <img src={PaySvg} alt='signinSvg' className='w-100 image-column' />
+        </Col>
+      </Row>
     </div>
-  )
+  );
 }
 
 export default PlaceOrderScreen

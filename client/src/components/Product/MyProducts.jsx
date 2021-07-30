@@ -46,16 +46,17 @@ const MyProducts = () => {
                   {/* Rating component */}
                   <Card.Title className='price'>€{item.price}</Card.Title>
                 </Card.Body>
-                <Link className='btn btn-warning' to={`/edit/${item._id}`}>
-                  Edit
+                <Link className='btn btn-dark' to={`/edit/${item._id}`}>
+                  <i className='fa fa-edit'> </i> Edit
                 </Link>
                 <Button
-                  className='btn btn-danger mt-2'
+                  variant='danger'
+                  className='mt-2'
                   onClick={() => {
                     Deleteproduct(item._id);
                   }}
                 >
-                  Delete
+                  <i className='fa fa-trash'> </i> Delete
                 </Button>
               </Card>
             </Col>
