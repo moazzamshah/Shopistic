@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Col, Container, Row } from 'react-bootstrap';
+import { Star } from "@material-ui/icons"
 
 function Product(props) {
   let { product } = props;
@@ -26,8 +27,11 @@ function Product(props) {
           <Link to={`/product/${product._id}`}>
             <Card.Title as='div'>{product.title}</Card.Title>
           </Link>
-          <Card.Text>{product.description}</Card.Text>
-          <Card.Title className='price'>${product.price}</Card.Title>
+          {/* <Card.Text>{product.description}</Card.Text> */}
+          <Card.Title className='price'>€ {product.price}</Card.Title>
+          {Array(4).fill(
+                      <Star style={{ color: '#FF9529' }} />
+                    )}
         </Card.Body>
       </Card>
     </Container>

@@ -94,7 +94,7 @@ function CartScreen(props) {
                         {item.itemId.title}
                       </span>
                     </Col>
-                    <Col md={2}>${item.itemId.price}</Col>
+                    <Col md={2}>€ {item.itemId.price}</Col>
                     <Col md={2}>
                       <Form.Control
                         as='select'
@@ -128,7 +128,7 @@ function CartScreen(props) {
             <ListGroup variant='flush'>
               <ListGroup.Item>
                 <h2>
-                  Subtotal:
+                  Subtotal: €
                   {cartItems.reduce((total, item) => {
                     return total + item.itemId.price;
                   }, 0)}

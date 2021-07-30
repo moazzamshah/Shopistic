@@ -42,9 +42,9 @@ const MyProducts = () => {
                   <Link to={`/product/${item._id}`}>
                     <Card.Title>{item.title}</Card.Title>
                   </Link>
-                  <Card.Text>{item.description}</Card.Text>
+                  {/* <Card.Text>{item.description}</Card.Text> */}
                   {/* Rating component */}
-                  <Card.Title className='price'>€{item.price}</Card.Title>
+                  <Card.Title className='price'>€ {item.price}</Card.Title>
                 </Card.Body>
                 <Link className='btn btn-dark' to={`/edit/${item._id}`}>
                   <i className='fa fa-edit'> </i> Edit
